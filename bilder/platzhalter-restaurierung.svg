@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700">
+<defs><linearGradient id="bg" x2=".8" y2="1"><stop stop-color="#7c5b4b"/><stop offset="1" stop-color="#2e4039"/></linearGradient></defs>
+<rect width="900" height="700" fill="url(#bg)"/><circle cx="715" cy="190" r="256" fill="#dfc599" opacity=".10"/><circle cx="715" cy="190" r="206" stroke="#e6d2a8" stroke-width="2" fill="none" opacity=".2"/>
+<g opacity=".3" stroke="#e8d8af" fill="none"><path d="M0 544H900M0 575H900" stroke-width="6"/><path d="M100 532l-32 66m182-66-32 66m182-66-32 66m182-66-32 66m182-66-32 66" stroke-width="10"/></g>
+<g opacity=".36" transform="translate(75 268)"><path d="M0 75Q12 38 52 38h565q40 0 57 37" stroke="#ebd2a1" stroke-width="15" fill="none"/><rect x="2" y="72" width="665" height="192" rx="10" stroke="#eadbb9" stroke-width="9" fill="#e6ca91" fill-opacity=".15"/><path d="M3 224h662" stroke="#e4b3a3" stroke-width="17"/><g stroke="#e5d6b6" stroke-width="8"><rect x="48" y="99" width="112" height="83" rx="4"/><rect x="193" y="99" width="112" height="83" rx="4"/><rect x="338" y="99" width="112" height="83" rx="4"/><rect x="483" y="99" width="112" height="83" rx="4"/></g><circle cx="125" cy="280" r="34" stroke="#e5d2a9" stroke-width="9"/><circle cx="529" cy="280" r="34" stroke="#e5d2a9" stroke-width="9"/></g>
+<text x="52" y="86" font-family="Georgia, serif" font-size="25" fill="#f9eacf" opacity=".85" letter-spacing="6">NEUSTADTER KOMPANIE</text>
+<text x="52" y="630" font-family="Georgia, serif" font-size="40" fill="#fff9e8" opacity=".85">RESTAURIERUNG</text><text x="53" y="670" font-family="Arial, sans-serif" font-size="17" letter-spacing="4" fill="#fff9e8" opacity=".75">HIER FOLGT EUER FOTO</text>
+</svg>
