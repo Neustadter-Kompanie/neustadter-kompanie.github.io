@@ -1,27 +1,205 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1">
-  <title>Neustadter Kompanie</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Die Neustadter Kompanie: Gemeinsam erhalten wir unseren historischen Wagen und schaffen einen Ort für Begegnungen und schöne Momente.">
+  <meta name="theme-color" content="#17382e">
+  <title>Neustadter Kompanie | Ein Wagen. Viele Geschichten.</title>
+  <link rel="icon" href="bilder/logo-neustadter-kompanie.jpg" type="image/jpeg">
+  <meta property="og:title" content="Neustadter Kompanie – Ein Wagen. Viele Geschichten.">
+  <meta property="og:description" content="Ein historischer Wagen, viele gemeinsame Ideen. Entdeckt die Neustadter Kompanie.">
+  <meta property="og:image" content="https://neustadter-kompanie.de/bilder/logo-neustadter-kompanie.jpg">
   <style>
-    body {
-      font-family: Georgia, serif;
-      background: #18382e;
-      color: #f6edda;
-      text-align: center;
-      margin: 0;
-      padding: 90px 20px;
-    }
-    h1 { font-size: 42px; }
-    p { font-size: 20px; }
+    :root{--pine:#17382e;--pine-deep:#102d25;--cream:#f7f3e8;--paper:#fffdf7;--sand:#e8dec9;--wine:#873d3b;--brass:#c6a66c;--ink:#23372d;--muted:#6e796f;--line:#dcd4c3;--font-sans:system-ui,-apple-system,"Segoe UI",sans-serif;--font-serif:Georgia,"Palatino Linotype",serif}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:96px}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font-sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    button,a{-webkit-tap-highlight-color:transparent}
+    a:focus-visible{outline:3px solid var(--brass);outline-offset:4px}
+    .skip{position:absolute;z-index:100;top:-100px;left:10px;padding:12px;background:#fff;color:#111}
+    .skip:focus{top:10px}
+    .shell{width:min(1160px,calc(100% - 48px));margin:auto}
+    .topline{background:var(--pine-deep);color:#e9e4d6;text-align:center;font-size:.68rem;letter-spacing:.21em;font-weight:700;padding:9px 16px;text-transform:uppercase}
+    header{position:sticky;top:0;z-index:30;background:rgba(247,243,232,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:78px}
+    .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+    .brand-logo{width:56px;height:56px;display:block;object-fit:contain;border-radius:5px;border:1px solid #d9c7a6;background:#f8ebc8}
+    .brand-title{font-family:var(--font-serif);font-weight:700;font-size:1.08rem;line-height:1.1;letter-spacing:.025em}
+    .brand-subtitle{font-size:.62rem;letter-spacing:.21em;text-transform:uppercase;color:var(--wine);font-weight:800;display:block;margin-top:5px}
+    nav{display:flex;align-items:center;gap:clamp(12px,2.4vw,31px);font-size:.78rem;letter-spacing:.045em;font-weight:700}
+    nav a{transition:color .2s}
+    nav a:hover{color:var(--wine)}
+    nav .nav-cta{padding:11px 17px;background:var(--wine);color:white;border-radius:2px}
+    nav .nav-cta:hover{background:#6b3030;color:white}
+    .hero{position:relative;background:var(--pine);color:var(--paper);overflow:hidden}
+    .hero:before{content:"";position:absolute;inset:0;opacity:.26;background:radial-gradient(circle at 22% 38%,#618579 0,transparent 44%),linear-gradient(116deg,transparent 60%,#0d251e 100%)}
+    .hero-inner{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:565px;align-items:center;gap:0}
+    .hero-copy{padding:75px 30px 83px 0;z-index:2}
+    .eyebrow{display:flex;align-items:center;gap:12px;text-transform:uppercase;letter-spacing:.21em;font-size:.69rem;font-weight:800;color:var(--brass)}
+    .eyebrow:before{content:"";width:35px;height:1px;background:currentColor}
+    h1,h2,h3,p{margin-top:0}
+    h1,h2,h3{font-family:var(--font-serif);font-weight:400}
+    h1{font-size:clamp(3.1rem,5.8vw,5.7rem);line-height:1.04;letter-spacing:-.045em;margin:27px 0 25px}
+    h1 em{display:block;color:#d8bf90;font-weight:400;font-style:italic}
+    .hero-lead{max-width:450px;color:#e3e7dd;font-size:1.08rem;line-height:1.85;margin-bottom:32px}
+    .buttons{display:flex;gap:11px;flex-wrap:wrap}
+    .btn{display:inline-flex;gap:12px;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;text-align:center;font-weight:800;text-transform:uppercase;letter-spacing:.09em;font-size:.7rem;border-radius:2px;transition:transform .2s,background .2s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-cream{background:var(--cream);color:var(--pine)}
+    .btn-outline{border:1px solid #9cafa2;color:var(--paper)}
+    .btn-wine{background:var(--wine);color:white}
+    .hero-visual{align-self:stretch;display:grid;place-items:center;position:relative;min-width:0}
+    .hero-visual:before{content:"";position:absolute;width:440px;height:440px;border:1px solid rgba(213,187,139,.25);border-radius:50%;right:2%;top:11%}
+    .hero-logo-frame{width:min(100%,435px);padding:13px;background:#f2e6c8;position:relative;z-index:1;border:1px solid #d2b781;box-shadow:0 26px 45px #071e1880,0 0 0 7px #f2e6c814;transform:rotate(2deg)}
+    .hero-logo-frame img{width:100%;height:auto;display:block;aspect-ratio:1;object-fit:contain}
+    .hero-logo-frame:after{content:"";position:absolute;inset:6px;pointer-events:none;border:1px solid #9f86564f}
+    .stamp{position:absolute;right:3%;bottom:20px;z-index:2;border:1px solid rgba(230,221,196,.43);color:#e2d9bd;padding:12px 20px;transform:rotate(-7deg);font:.69rem var(--font-sans);font-weight:700;letter-spacing:.18em;text-align:center;line-height:1.75;text-transform:uppercase}
+    .stamp strong{display:block;font:italic 1.25rem var(--font-serif);letter-spacing:.02em}
+    .line{height:7px;background:linear-gradient(90deg,var(--wine) 0 50%,var(--brass) 50% 100%)}
+    section{padding:105px 0}
+    .section-top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:40px}
+    .kicker{text-transform:uppercase;letter-spacing:.23em;font-size:.69rem;font-weight:800;color:var(--wine);display:block;margin-bottom:14px}
+    h2{font-size:clamp(2.35rem,4.4vw,4rem);line-height:1.13;letter-spacing:-.035em;margin:0}
+    .section-note{max-width:380px;color:#65746b;margin:0;font-size:.96rem}
+    .story-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:80px;align-items:start}
+    .story-copy p{max-width:610px;font-size:1.08rem;color:#4a5b50;line-height:1.94}
+    .story-copy p:first-of-type{margin-top:31px}
+    .story-copy strong{color:var(--pine)}
+    .quote-card{position:relative;background:#e8e0ce;padding:41px 38px;min-height:275px;border-top:5px solid var(--wine)}
+    .quote-card:before{content:"“";position:absolute;top:14px;right:32px;font-size:7rem;line-height:1;color:rgba(135,61,59,.11);font-family:var(--font-serif)}
+    .quote-card p{font:italic clamp(1.4rem,2.4vw,2rem)/1.38 var(--font-serif);color:var(--pine);margin:4px 0 27px;position:relative}
+    .quote-card small{text-transform:uppercase;letter-spacing:.2em;font-weight:800;font-size:.64rem;color:var(--wine)}
+    .gallery-section{background:#eee8da}
+    .gallery-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;grid-template-rows:245px 245px;gap:15px}
+    .photo{overflow:hidden;position:relative;background:#d8d2c2;isolation:isolate}
+    .photo:first-child{grid-row:span 2}
+    .photo:nth-child(4){grid-column:span 2}
+    .photo img{height:100%;width:100%;object-fit:cover;transition:transform .7s ease;filter:saturate(.82)}
+    .photo:hover img{transform:scale(1.035)}
+    .photo:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(12,32,24,.76));pointer-events:none}
+    .photo-label{position:absolute;bottom:18px;left:22px;color:#fff;z-index:1;font-family:var(--font-serif);font-size:1.25rem;text-shadow:0 2px 8px #22352c66}
+    .photo-label small{font-family:var(--font-sans);font-size:.59rem;letter-spacing:.19em;font-weight:800;display:block;margin-bottom:4px}
+    .gallery-caption{color:#627069;font-size:.82rem;margin-top:16px}
+    .event-section{background:var(--paper)}
+    .event-card{display:grid;grid-template-columns:175px 1fr auto;align-items:center;gap:37px;border:1px solid var(--line);background:#f9f6ee;padding:28px 35px;margin-top:36px}
+    .event-date{border-right:1px solid var(--line);color:var(--wine);font-family:var(--font-serif);line-height:1.05;padding-right:24px}
+    .event-date strong{font-size:4.3rem;font-weight:400;display:block}
+    .event-date span{display:block;font-family:var(--font-sans);letter-spacing:.18em;text-transform:uppercase;font-size:.7rem;font-weight:800;margin-top:7px}
+    .event-details .event-kicker{font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.19em;color:var(--wine)}
+    .event-details h3{font-size:2rem;line-height:1.2;margin:6px 0 8px}
+    .event-details p{font-size:.89rem;color:#68786d;margin:0}
+    .event-pill{background:#e7ecdf;border:1px solid #cad4c5;color:var(--pine);padding:10px 16px;border-radius:50px;font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+    .member-section{background:var(--pine);color:#fbf9ee;position:relative;overflow:hidden}
+    .member-section:before{content:"";position:absolute;left:-180px;bottom:-280px;width:560px;height:560px;border:1px solid #b7b78e33;border-radius:50%;box-shadow:0 0 0 70px #ffffff08,0 0 0 140px #ffffff08}
+    .member-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center;position:relative}
+    .member-section .kicker{color:var(--brass)}
+    .member-section h2{max-width:650px}
+    .member-section p{color:#d5e0d7;line-height:1.9;max-width:580px;font-size:1.04rem;margin-top:23px}
+    .member-card{background:#f5eedf;color:var(--pine);padding:41px;text-align:center;border:1px solid #c7b68f;box-shadow:12px 12px 0 #0e2b23}
+    .member-card .price{font:400 5.1rem/1 var(--font-serif);letter-spacing:-.065em}
+    .member-card .price small{font:700 1rem var(--font-sans)}
+    .member-card p{color:#627266;font-size:.86rem;line-height:1.7;margin:13px 0 25px}
+    .member-card .btn{width:100%}
+    .member-card .fineprint{display:block;font-size:.69rem;margin-top:14px;color:#748276}
+    .contact-section{padding:84px 0}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .contact-grid p{color:#64736a;max-width:520px;line-height:1.85}
+    .contact-list{border-top:1px solid var(--line);margin-top:19px}
+    .contact-link{padding:16px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;transition:padding .2s}
+    .contact-link:hover{padding-left:5px}
+    .contact-link strong{font-size:.86rem;display:block;color:var(--pine)}
+    .contact-link span{font-size:.87rem;display:block;color:var(--wine);overflow-wrap:anywhere}
+    .contact-link .arrow{font-size:1.3rem;color:var(--wine);flex:none}
+    footer{background:var(--pine-deep);color:#d3dcd2;padding:35px 0}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:25px;flex-wrap:wrap}
+    .footer-name{font-family:var(--font-serif);font-size:1.23rem;color:#fff}
+    footer p{margin:5px 0 0;font-size:.77rem;color:#a4b4ab}
+    .footer-links{display:flex;gap:21px;font-size:.75rem}
+    .footer-links a:hover{text-decoration:underline;color:#fff}
+    @media(max-width:920px){.hero-inner{grid-template-columns:1fr 1fr;min-height:490px}.hero-copy{padding:68px 0}.hero-logo-frame{width:min(100%,380px)}.stamp{right:0}.story-grid{gap:35px}.event-card{grid-template-columns:135px 1fr;gap:25px}.event-pill{grid-column:2;justify-self:start}.member-grid{gap:30px}}
+    @media(max-width:680px){.shell{width:min(100% - 34px,1160px)}.topline{font-size:.6rem;letter-spacing:.12em}.nav{min-height:72px;align-items:flex-start;padding:12px 0;flex-wrap:wrap}.brand-logo{width:47px;height:47px}.brand-title{font-size:1.01rem}.brand-subtitle{font-size:.54rem}nav{width:100%;overflow:auto;justify-content:space-between;gap:16px;white-space:nowrap;padding-bottom:5px;font-size:.7rem}nav .nav-cta{padding:8px 12px}.hero-inner{display:flex;flex-direction:column;min-height:0;align-items:stretch}.hero-copy{padding:65px 0 0}.hero-copy h1{font-size:clamp(3.3rem,12vw,4.4rem);max-width:500px}.hero-lead{font-size:1rem}.hero-visual{height:335px;overflow:visible;margin:10px 0 0}.hero-logo-frame{width:min(68vw,270px);margin:auto;transform:rotate(2deg)}.hero-visual:before{top:0;right:20%;height:260px;width:260px}.stamp{bottom:17px;right:19px;transform:rotate(-5deg) scale(.8);transform-origin:bottom right}section{padding:71px 0}.section-top{display:block;margin-bottom:26px}.section-note{margin-top:15px}.story-grid,.member-grid,.contact-grid{grid-template-columns:1fr;gap:28px}.story-copy p{font-size:.99rem}.quote-card{min-height:0;padding:29px}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:270px 180px 180px;gap:9px}.photo:first-child{grid-column:span 2;grid-row:span 1}.photo:nth-child(4){grid-column:span 2}.photo-label{bottom:12px;left:13px;font-size:1.05rem}.event-card{grid-template-columns:78px 1fr;padding:20px;gap:17px}.event-date{padding-right:11px}.event-date strong{font-size:3.2rem}.event-details h3{font-size:1.5rem}.event-pill{grid-column:1/-1}.member-card{padding:33px;box-shadow:8px 8px 0 #0e2b23}.member-card .price{font-size:4.5rem}.contact-section{padding:70px 0}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.photo img,.btn{transition:none}}
   </style>
 </head>
 <body>
-  <h1>Neustadter Kompanie</h1>
-  <p>Willkommen bei unserem historischen Eisenbahn-Wagen!</p>
-  <p>Unsere Website befindet sich im Aufbau.</p>
+  <a class="skip" href="#inhalt">Zum Inhalt springen</a>
+  <div class="topline">Gemeinschaft · Geschichte · Gemütlichkeit</div>
+  <header>
+    <div class="shell nav">
+      <a href="#start" class="brand" aria-label="Neustadter Kompanie – Startseite">
+        <img class="brand-logo" src="bilder/logo-neustadter-kompanie.jpg" alt="" width="56" height="56">
+        <span><span class="brand-title">Neustadter Kompanie</span><span class="brand-subtitle">Unser historischer Wagen</span></span>
+      </a>
+      <nav aria-label="Hauptnavigation">
+        <a href="#wagen">Der Wagen</a>
+        <a href="#bilder">Einblicke</a>
+        <a href="#termine">Termine</a>
+        <a class="nav-cta" href="#mitmachen">Mitmachen ↗</a>
+      </nav>
+    </div>
+  </header>
+  <main id="inhalt">
+    <section class="hero" id="start" aria-labelledby="hero-title">
+      <div class="shell hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow">Est. 2025 · Neustadt / Weinstraße</div>
+          <h1 id="hero-title">Ein alter Wagen.<em>Viele neue Geschichten.</em></h1>
+          <p class="hero-lead">Ein Stück Geschichte, das weiterleben soll. Mit Herzblut, Gemeinschaft und guten Ideen hauchen wir unserem historischen Wagen neues Leben ein.</p>
+          <div class="buttons"><a class="btn btn-cream" href="#wagen">Unser Projekt <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="#bilder">Bilder ansehen <span aria-hidden="true">↓</span></a></div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-logo-frame">
+            <img src="bilder/logo-neustadter-kompanie.jpg" alt="Wappen der Neustadter Kompanie: historischer grüner Wagen, seit 2025" width="640" height="640" fetchpriority="high">
+          </div>
+          <div class="stamp">Ein Stück Geschichte<strong>seit ca. 1950</strong></div>
+        </div>
+      </div>
+    </section>
+    <div class="line" aria-hidden="true"></div>
+    <section id="wagen" aria-labelledby="wagen-title">
+      <div class="shell story-grid">
+        <div class="story-copy"><span class="kicker">01 / Unsere Geschichte</span><h2 id="wagen-title">Alte Substanz.<br>Neue Ideen.</h2><p>Unser Wagen stammt ungefähr aus der Zeit um <strong>1950</strong>. Für uns ist er mehr als ein altes Stück Eisenbahn: Er ist ein Ort, an dem Menschen zusammenkommen, Geschichten erzählen und gemeinsam etwas auf die Beine stellen.</p><p>Mit der <strong>Neustadter Kompanie</strong> möchten wir den Wagen Schritt für Schritt erhalten, renovieren und mit neuem Leben füllen. Die Einnahmen unserer Veranstaltungen fließen in dieses gemeinsame Projekt.</p></div>
+        <aside class="quote-card"><p>Was uns verbindet, ist nicht nur ein Wagen. Es sind die Menschen drumherum.</p><small>Neustadter Kompanie · Seit 2025</small></aside>
+      </div>
+    </section>
+    <section class="gallery-section" id="bilder" aria-labelledby="bilder-title">
+      <div class="shell">
+        <div class="section-top"><div><span class="kicker">02 / Einblicke</span><h2 id="bilder-title">Momente rund<br>um den Wagen.</h2></div><p class="section-note">Hier kommen bald unsere eigenen Fotos hinein – vom Wagen, der Renovierung und unseren gemeinsamen Festen.</p></div>
+        <div class="gallery-grid" aria-label="Fotogalerie mit derzeitigen Platzhaltern">
+          <!-- Eigene Fotos einfach mit diesen Dateinamen in den Ordner "bilder" hochladen. -->
+          <div class="photo"><img src="bilder/wagen-aussen.jpg" onerror="this.onerror=null;this.src='bilder/platzhalter-aussen.svg'" alt="Platzhalter für ein Foto der Außenansicht unseres Wagens" loading="lazy"><div class="photo-label"><small>01 / Unser Projekt</small>Der Wagen</div></div>
+          <div class="photo"><img src="bilder/wagen-innen.jpg" onerror="this.onerror=null;this.src='bilder/platzhalter-innen.svg'" alt="Platzhalter für ein Foto aus dem Wageninneren" loading="lazy"><div class="photo-label"><small>02 / Einblicke</small>Innenleben</div></div>
+          <div class="photo"><img src="bilder/renovierung.jpg" onerror="this.onerror=null;this.src='bilder/platzhalter-restaurierung.svg'" alt="Platzhalter für ein Foto der Renovierungsarbeiten" loading="lazy"><div class="photo-label"><small>03 / Wir packen an</small>Renovierung</div></div>
+          <div class="photo"><img src="bilder/gemeinschaft.jpg" onerror="this.onerror=null;this.src='bilder/platzhalter-gemeinschaft.svg'" alt="Platzhalter für ein Foto eines gemeinsamen Festes" loading="lazy"><div class="photo-label"><small>04 / Gemeinsam</small>Unsere Veranstaltungen</div></div>
+        </div>
+        <p class="gallery-caption">Hinweis: Die gezeigten Grafiken sind Platzhalter, bis wir echte Bilder unseres Wagens ergänzt haben.</p>
+      </div>
+    </section>
+    <section class="event-section" id="termine" aria-labelledby="termine-title">
+      <div class="shell"><span class="kicker">03 / Zusammenkommen</span><h2 id="termine-title">Das nächste Fest.</h2>
+        <article class="event-card"><div class="event-date" aria-label="4. Dezember 2026"><strong>04</strong><span>Dez 2026</span></div><div class="event-details"><span class="event-kicker">Freitag · Save the Date</span><h3>Weihnachtsfeier am Wagen</h3><p>Ein gemütlicher Jahresausklang mit der Neustadter Kompanie. Weitere Informationen folgen.</p></div><span class="event-pill">Wir freuen uns auf euch</span></article>
+      </div>
+    </section>
+    <section class="member-section" id="mitmachen" aria-labelledby="mitmachen-title">
+      <div class="shell member-grid"><div><span class="kicker">04 / Dabei sein</span><h2 id="mitmachen-title">Gemeinsam geht<br>mehr.</h2><p>Ob beim Anpacken, bei unseren Festen oder einfach als Unterstützer: Die Neustadter Kompanie lebt von Menschen, die dabei sind. Mit einer Mitgliedschaft helft ihr, unseren historischen Wagen zu erhalten.</p></div><div class="member-card"><span class="kicker">Mitglied werden</span><div class="price">2 € <small>/ Monat</small></div><p>Ein kleiner Beitrag für ein großes gemeinsames Projekt.</p><a class="btn btn-wine" href="mailto:mitglied-werden@neustadter-kompanie.de?subject=Anfrage%20zur%20Mitgliedschaft">Interesse? Meldet euch <span aria-hidden="true">↗</span></a><span class="fineprint">Weitere Informationen zur Mitgliedschaft auf Anfrage</span></div></div>
+    </section>
+    <section class="contact-section" id="kontakt" aria-labelledby="kontakt-title">
+      <div class="shell contact-grid">
+        <div><span class="kicker">05 / Kontakt</span><h2 id="kontakt-title">Fragen? Ideen?<br>Einfach melden.</h2></div>
+        <div>
+          <p>Ob allgemeine Fragen, Veranstaltungsanfragen oder eine Mitgliedschaft: Hier erreicht ihr uns direkt.</p>
+          <div class="contact-list">
+            <a class="contact-link" href="mailto:info@neustadter-kompanie.de?subject=Kontakt%20%C3%BCber%20die%20Website"><span><strong>Allgemeiner Kontakt</strong>info@neustadter-kompanie.de</span><span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="contact-link" href="mailto:anfrage@neustadter-kompanie.de?subject=Anfrage%20an%20die%20Neustadter%20Kompanie"><span><strong>Anfragen &amp; Veranstaltungen</strong>anfrage@neustadter-kompanie.de</span><span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="contact-link" href="mailto:mitglied-werden@neustadter-kompanie.de?subject=Anfrage%20zur%20Mitgliedschaft"><span><strong>Mitglied werden</strong>mitglied-werden@neustadter-kompanie.de</span><span class="arrow" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="shell footer-inner"><div><div class="footer-name">Neustadter Kompanie</div><p>Ein historischer Wagen. Eine lebendige Gemeinschaft.</p></div><div class="footer-links"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="#start">Nach oben ↑</a></div></div></footer>
 </body>
 </html>
