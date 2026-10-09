@@ -93,10 +93,6 @@
     .carousel-dots{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);display:flex;gap:9px;z-index:3}
     .carousel-dots button{width:11px;height:11px;border-radius:50%;border:none;padding:0;background:rgba(255,255,255,.42);cursor:pointer}
     .carousel-dots button.active{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.18)}
-    .gallery-info{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
-    .info-card{background:#fffdf7;border:1px solid var(--line);padding:20px 22px;min-height:100%}
-    .info-card strong{display:block;text-transform:uppercase;letter-spacing:.18em;font-size:.65rem;color:var(--wine);margin-bottom:9px}
-    .info-card p{margin:0;color:#55645a;font-size:.93rem;line-height:1.7}
     .gallery-caption{color:#627069;font-size:.82rem;margin-top:16px}
     .event-section{background:var(--paper)}
     .event-card{display:grid;grid-template-columns:175px 1fr auto;align-items:center;gap:37px;border:1px solid var(--line);background:#f9f6ee;padding:28px 35px;margin-top:36px}
@@ -133,7 +129,7 @@
     .footer-links{display:flex;gap:20px;flex-wrap:wrap;font-size:.85rem}
     .footer-links a:hover{color:#fff}
     @media(max-width:1050px){.hero-inner{grid-template-columns:1fr 1fr;gap:32px;min-height:530px}.story-grid{gap:35px}.event-card{grid-template-columns:135px 1fr;gap:25px}.event-pill{grid-column:2;justify-self:start}.member-grid{gap:30px}}
-    @media(max-width:820px){.hero-inner{display:flex;flex-direction:column;align-items:stretch;min-height:0}.hero-copy{padding:65px 0 0}.hero-visual{padding:20px 0 60px}.hero-stack{width:min(100%,560px)}.hero-photo{aspect-ratio:4/3}.hero-logo-chip{left:12px;bottom:-22px;width:110px}.hero-card{right:12px;bottom:10px;max-width:210px}.story-grid,.member-grid,.contact-grid{grid-template-columns:1fr;gap:30px}.gallery-info{grid-template-columns:1fr}}
+    @media(max-width:820px){.hero-inner{display:flex;flex-direction:column;align-items:stretch;min-height:0}.hero-copy{padding:65px 0 0}.hero-visual{padding:20px 0 60px}.hero-stack{width:min(100%,560px)}.hero-photo{aspect-ratio:4/3}.hero-logo-chip{left:12px;bottom:-22px;width:110px}.hero-card{right:12px;bottom:10px;max-width:210px}.story-grid,.member-grid,.contact-grid{grid-template-columns:1fr;gap:30px}}
     @media(max-width:680px){.shell{width:min(100% - 34px,1160px)}.topline{font-size:.6rem;letter-spacing:.12em}.nav{min-height:72px;align-items:flex-start;padding:12px 0;flex-wrap:wrap}.brand-logo{width:47px;height:47px}.brand-title{font-size:1.01rem}.brand-subtitle{font-size:.54rem}nav{width:100%;overflow:auto;justify-content:space-between;gap:16px;white-space:nowrap;padding-bottom:5px;font-size:.7rem}nav .nav-cta{padding:8px 12px}h1{font-size:clamp(3.2rem,12vw,4.4rem)}section{padding:72px 0}.section-top{display:block;margin-bottom:26px}.section-note{margin-top:15px}.story-copy p{font-size:.99rem}.quote-card{min-height:0;padding:29px}.carousel{aspect-ratio:4/5}.slide-caption{left:18px;right:18px;bottom:32px}.slide-caption strong{font-size:1.45rem}.slide-caption span{font-size:.8rem}.carousel-btn{width:42px;height:42px}.carousel-btn.prev{left:10px}.carousel-btn.next{right:10px}.event-card{grid-template-columns:78px 1fr;padding:20px;gap:17px}.event-date{padding-right:11px}.event-date strong{font-size:3.2rem}.event-details h3{font-size:1.5rem}.event-pill{grid-column:1/-1}.member-card{padding:33px;box-shadow:8px 8px 0 #0e2b23}.member-card .price{font-size:4.5rem}.contact-section{padding:70px 0}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.slide{transition:none}}
   </style>
@@ -174,7 +170,7 @@
               <img src="bilder/wagen-nacht.png" alt="Beleuchteter historischer Wagen nachts am Gleis" width="1448" height="1086" fetchpriority="high">
             </div>
             <div class="hero-logo-chip"><img src="bilder/logo-neustadter-kompanie.jpg" alt="Wappen der Neustadter Kompanie"></div>
-            <div class="hero-card"><strong>Neu auf der Website</strong><p>Mit automatischem Bilderkarussell und ersten echten Einblicken in unseren Wagen.</p></div>
+            <div class="hero-card"><strong>Unser Treffpunkt</strong><p>Wo Eisenbahngeschichte, gute Gespräche und Gemeinschaft zusammenkommen.</p></div>
           </div>
         </div>
       </div>
@@ -197,7 +193,7 @@
       <div class="shell">
         <div class="section-top">
           <div><span class="kicker">02 / Einblicke</span><h2 id="bilder-title">Momente rund<br>um den Wagen.</h2></div>
-          <p class="section-note">Hier laufen die Bilder automatisch durch. Alle verwendeten Fotos mit Personen wurden für die Website unkenntlich gemacht.</p>
+          <p class="section-note">Ob gemütlicher Abend, besondere Feier oder ein kleines Detail: Unser Wagen hat viele Geschichten zu erzählen.</p>
         </div>
 
         <div class="carousel-wrap" data-carousel>
@@ -207,11 +203,11 @@
               <div class="slide-caption"><strong>Unser Wagen bei Nacht</strong><span>Außenansicht unseres historischen Wagens – stimmungsvoll beleuchtet direkt am Gleis.</span></div>
             </article>
             <article class="slide">
-              <img src="bilder/party-im-wagen-anonym.png" alt="Anonymisierte Gruppenaufnahme im Wageninneren" loading="lazy">
+              <img src="bilder/party-im-wagen-anonym.png" alt="Gemeinsamer Abend rund um die Theke im Wageninneren" loading="lazy">
               <div class="slide-caption"><strong>Gemeinschaft im Wagen</strong><span>Gemeinsame Momente machen aus dem Wagen einen besonderen Treffpunkt.</span></div>
             </article>
             <article class="slide">
-              <img src="bilder/bar-im-wagen-anonym.png" alt="Anonymisierte Bar-Szene mit bunten Lichtern im Wagen" loading="lazy">
+              <img src="bilder/bar-im-wagen-anonym.png" alt="Bunt beleuchtete Theke mit Gästen im Wageninneren" loading="lazy">
               <div class="slide-caption"><strong>Gemütliche Abende</strong><span>Bunte Lichter, gute Gespräche und eine besondere Atmosphäre im Inneren unseres Wagens.</span></div>
             </article>
             <article class="slide">
@@ -227,7 +223,7 @@
               <div class="slide-caption"><strong>Zwischen Gleis und Geschichte</strong><span>Der Wagen lebt von besonderen Blickwinkeln – drinnen wie draußen.</span></div>
             </article>
             <article class="slide">
-              <img src="bilder/lasernebel-anonym.png" alt="Anonymisierte Silhouette in Nebel und Laserlicht" loading="lazy">
+              <img src="bilder/lasernebel-anonym.png" alt="Nebel und Laserlicht bei einer Feier im Wagen" loading="lazy">
               <div class="slide-caption"><strong>Veranstaltungen mit Atmosphäre</strong><span>Von ruhigen Abenden bis zu besonderen Feiern – der Wagen bietet den passenden Rahmen.</span></div>
             </article>
 
@@ -237,12 +233,7 @@
           </div>
         </div>
 
-        <div class="gallery-info">
-          <article class="info-card"><strong>Automatisch</strong><p>Das Karussell läuft von selbst durch. Besucher können aber auch manuell vor und zurück klicken.</p></article>
-          <article class="info-card"><strong>Datenschutz</strong><p>Alle Bilder mit Personen wurden für die öffentliche Website anonymisiert, damit niemand erkennbar ist.</p></article>
-          <article class="info-card"><strong>Später austauschbar</strong><p>Neue Bilder können wir jederzeit ergänzen oder gegen bessere Aufnahmen austauschen – ohne das Design neu zu bauen.</p></article>
-        </div>
-        <p class="gallery-caption">Tipp: Wenn du später weitere Fotos hochlädst, können wir das Karussell jederzeit erweitern.</p>
+        <p class="gallery-caption">Einblicke in unser Wagenleben – voller besonderer Momente und Erinnerungen.</p>
       </div>
     </section>
 
