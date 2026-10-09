@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Die Neustadter Kompanie: Gemeinsam erhalten wir unseren historischen Wagen und schaffen einen Ort für Begegnungen und schöne Momente.">
+  <meta name="description" content="Die Neustadter Kompanie: Gemeinsam erhalten wir unseren historischen Wagen und schaffen einen Ort für Begegnungen, Feste und schöne Momente.">
   <meta name="theme-color" content="#17382e">
-  <title>Neustadter Kompanie | Ein Wagen. Viele Geschichten.</title>
+  <title>Neustadter Kompanie | Unser historischer Wagen</title>
   <link rel="icon" href="bilder/logo-neustadter-kompanie.jpg" type="image/jpeg">
-  <meta property="og:title" content="Neustadter Kompanie – Ein Wagen. Viele Geschichten.">
+  <meta property="og:title" content="Neustadter Kompanie – Unser historischer Wagen">
   <meta property="og:description" content="Ein historischer Wagen, viele gemeinsame Ideen. Entdeckt die Neustadter Kompanie.">
   <meta property="og:image" content="https://neustadter-kompanie.de/bilder/logo-neustadter-kompanie.jpg">
   <style>
-    :root{--pine:#17382e;--pine-deep:#102d25;--cream:#f7f3e8;--paper:#fffdf7;--sand:#e8dec9;--wine:#873d3b;--brass:#c6a66c;--ink:#23372d;--muted:#6e796f;--line:#dcd4c3;--font-sans:system-ui,-apple-system,"Segoe UI",sans-serif;--font-serif:Georgia,"Palatino Linotype",serif}
+    :root{--pine:#17382e;--pine-deep:#102d25;--cream:#f7f3e8;--paper:#fffdf7;--sand:#e8dec9;--wine:#873d3b;--brass:#c6a66c;--ink:#23372d;--muted:#6e796f;--line:#dcd4c3;--shadow:0 20px 40px rgba(16,45,37,.12);--font-sans:system-ui,-apple-system,"Segoe UI",sans-serif;--font-serif:Georgia,"Palatino Linotype",serif}
     *,*::before,*::after{box-sizing:border-box}
     html{scroll-behavior:smooth;scroll-padding-top:96px}
     body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font-sans);line-height:1.65;-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
-    button,a{-webkit-tap-highlight-color:transparent}
-    a:focus-visible{outline:3px solid var(--brass);outline-offset:4px}
+    button,input{font:inherit}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--brass);outline-offset:4px}
     .skip{position:absolute;z-index:100;top:-100px;left:10px;padding:12px;background:#fff;color:#111}
     .skip:focus{top:10px}
     .shell{width:min(1160px,calc(100% - 48px));margin:auto}
@@ -36,34 +36,39 @@
     nav .nav-cta:hover{background:#6b3030;color:white}
     .hero{position:relative;background:var(--pine);color:var(--paper);overflow:hidden}
     .hero:before{content:"";position:absolute;inset:0;opacity:.26;background:radial-gradient(circle at 22% 38%,#618579 0,transparent 44%),linear-gradient(116deg,transparent 60%,#0d251e 100%)}
-    .hero-inner{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:565px;align-items:center;gap:0}
-    .hero-copy{padding:75px 30px 83px 0;z-index:2}
+    .hero-inner{position:relative;display:grid;grid-template-columns:1.05fr .95fr;min-height:600px;align-items:center;gap:50px}
+    .hero-copy{padding:75px 0 83px;z-index:2}
     .eyebrow{display:flex;align-items:center;gap:12px;text-transform:uppercase;letter-spacing:.21em;font-size:.69rem;font-weight:800;color:var(--brass)}
     .eyebrow:before{content:"";width:35px;height:1px;background:currentColor}
     h1,h2,h3,p{margin-top:0}
     h1,h2,h3{font-family:var(--font-serif);font-weight:400}
     h1{font-size:clamp(3.1rem,5.8vw,5.7rem);line-height:1.04;letter-spacing:-.045em;margin:27px 0 25px}
     h1 em{display:block;color:#d8bf90;font-weight:400;font-style:italic}
-    .hero-lead{max-width:450px;color:#e3e7dd;font-size:1.08rem;line-height:1.85;margin-bottom:32px}
+    .hero-lead{max-width:520px;color:#e3e7dd;font-size:1.08rem;line-height:1.85;margin-bottom:32px}
     .buttons{display:flex;gap:11px;flex-wrap:wrap}
-    .btn{display:inline-flex;gap:12px;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;text-align:center;font-weight:800;text-transform:uppercase;letter-spacing:.09em;font-size:.7rem;border-radius:2px;transition:transform .2s,background .2s}
+    .btn{display:inline-flex;gap:12px;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;text-align:center;font-weight:800;text-transform:uppercase;letter-spacing:.09em;font-size:.7rem;border-radius:2px;transition:transform .2s,background .2s,border-color .2s}
     .btn:hover{transform:translateY(-2px)}
     .btn-cream{background:var(--cream);color:var(--pine)}
     .btn-outline{border:1px solid #9cafa2;color:var(--paper)}
     .btn-wine{background:var(--wine);color:white}
-    .hero-visual{align-self:stretch;display:grid;place-items:center;position:relative;min-width:0}
-    .hero-visual:before{content:"";position:absolute;width:440px;height:440px;border:1px solid rgba(213,187,139,.25);border-radius:50%;right:2%;top:11%}
-    .hero-logo-frame{width:min(100%,435px);padding:13px;background:#f2e6c8;position:relative;z-index:1;border:1px solid #d2b781;box-shadow:0 26px 45px #071e1880,0 0 0 7px #f2e6c814;transform:rotate(2deg)}
-    .hero-logo-frame img{width:100%;height:auto;display:block;aspect-ratio:1;object-fit:contain}
-    .hero-logo-frame:after{content:"";position:absolute;inset:6px;pointer-events:none;border:1px solid #9f86564f}
-    .stamp{position:absolute;right:3%;bottom:20px;z-index:2;border:1px solid rgba(230,221,196,.43);color:#e2d9bd;padding:12px 20px;transform:rotate(-7deg);font:.69rem var(--font-sans);font-weight:700;letter-spacing:.18em;text-align:center;line-height:1.75;text-transform:uppercase}
+    .hero-visual{position:relative;align-self:stretch;display:grid;place-items:center;min-width:0;padding:60px 0}
+    .hero-visual:before{content:"";position:absolute;width:440px;height:440px;border:1px solid rgba(213,187,139,.25);border-radius:50%;right:2%;top:12%}
+    .hero-stack{position:relative;width:min(100%,470px)}
+    .hero-photo{border:1px solid rgba(217,211,190,.42);box-shadow:0 26px 45px rgba(7,30,24,.5);overflow:hidden;background:#0d251e;aspect-ratio:4/3}
+    .hero-photo img{width:100%;height:100%;object-fit:cover}
+    .hero-logo-chip{position:absolute;left:-22px;bottom:-26px;background:#f2e6c8;border:1px solid #d2b781;box-shadow:0 15px 30px rgba(7,30,24,.35);padding:10px;width:130px}
+    .hero-logo-chip img{width:100%;aspect-ratio:1;object-fit:contain}
+    .stamp{position:absolute;right:0;top:-10px;z-index:2;border:1px solid rgba(230,221,196,.43);color:#e2d9bd;padding:12px 20px;transform:rotate(-7deg);font:.69rem var(--font-sans);font-weight:700;letter-spacing:.18em;text-align:center;line-height:1.75;text-transform:uppercase;background:rgba(16,45,37,.45);backdrop-filter:blur(3px)}
     .stamp strong{display:block;font:italic 1.25rem var(--font-serif);letter-spacing:.02em}
+    .hero-card{position:absolute;right:-18px;bottom:22px;background:#f6f0df;color:var(--pine);padding:18px 20px;max-width:220px;border-left:4px solid var(--wine);box-shadow:0 15px 30px rgba(7,30,24,.28)}
+    .hero-card strong{display:block;font-size:.77rem;letter-spacing:.17em;text-transform:uppercase;color:var(--wine);margin-bottom:8px}
+    .hero-card p{margin:0;font-size:.9rem;line-height:1.6;color:#46584d}
     .line{height:7px;background:linear-gradient(90deg,var(--wine) 0 50%,var(--brass) 50% 100%)}
-    section{padding:105px 0}
+    section{padding:100px 0}
     .section-top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:40px}
     .kicker{text-transform:uppercase;letter-spacing:.23em;font-size:.69rem;font-weight:800;color:var(--wine);display:block;margin-bottom:14px}
     h2{font-size:clamp(2.35rem,4.4vw,4rem);line-height:1.13;letter-spacing:-.035em;margin:0}
-    .section-note{max-width:380px;color:#65746b;margin:0;font-size:.96rem}
+    .section-note{max-width:440px;color:#65746b;margin:0;font-size:.96rem}
     .story-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:80px;align-items:start}
     .story-copy p{max-width:610px;font-size:1.08rem;color:#4a5b50;line-height:1.94}
     .story-copy p:first-of-type{margin-top:31px}
@@ -73,15 +78,25 @@
     .quote-card p{font:italic clamp(1.4rem,2.4vw,2rem)/1.38 var(--font-serif);color:var(--pine);margin:4px 0 27px;position:relative}
     .quote-card small{text-transform:uppercase;letter-spacing:.2em;font-weight:800;font-size:.64rem;color:var(--wine)}
     .gallery-section{background:#eee8da}
-    .gallery-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;grid-template-rows:245px 245px;gap:15px}
-    .photo{overflow:hidden;position:relative;background:#d8d2c2;isolation:isolate}
-    .photo:first-child{grid-row:span 2}
-    .photo:nth-child(4){grid-column:span 2}
-    .photo img{height:100%;width:100%;object-fit:cover;transition:transform .7s ease;filter:saturate(.82)}
-    .photo:hover img{transform:scale(1.035)}
-    .photo:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(12,32,24,.76));pointer-events:none}
-    .photo-label{position:absolute;bottom:18px;left:22px;color:#fff;z-index:1;font-family:var(--font-serif);font-size:1.25rem;text-shadow:0 2px 8px #22352c66}
-    .photo-label small{font-family:var(--font-sans);font-size:.59rem;letter-spacing:.19em;font-weight:800;display:block;margin-bottom:4px}
+    .carousel-wrap{position:relative;background:#d7cfbd;border:1px solid #d3cab8;box-shadow:var(--shadow);overflow:hidden}
+    .carousel{position:relative;aspect-ratio:16/9;background:#d1c5b0}
+    .slide{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .6s ease}
+    .slide.active{opacity:1;pointer-events:auto}
+    .slide img{width:100%;height:100%;object-fit:cover}
+    .slide::after{content:"";position:absolute;inset:48% 0 0;background:linear-gradient(transparent,rgba(12,32,24,.85));pointer-events:none}
+    .slide-caption{position:absolute;left:28px;right:28px;bottom:24px;z-index:2;color:#fff}
+    .slide-caption strong{display:block;font-family:var(--font-serif);font-size:1.9rem;line-height:1.1;margin-bottom:6px;text-shadow:0 3px 16px rgba(0,0,0,.4)}
+    .slide-caption span{display:block;font-size:.86rem;color:#f3f0e4;max-width:650px}
+    .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:48px;height:48px;border:none;border-radius:50%;background:rgba(16,45,37,.76);color:#fff;cursor:pointer;display:grid;place-items:center;font-size:1.2rem;transition:background .2s,transform .2s}
+    .carousel-btn:hover{background:rgba(16,45,37,.95);transform:translateY(-50%) scale(1.04)}
+    .carousel-btn.prev{left:18px}.carousel-btn.next{right:18px}
+    .carousel-dots{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);display:flex;gap:9px;z-index:3}
+    .carousel-dots button{width:11px;height:11px;border-radius:50%;border:none;padding:0;background:rgba(255,255,255,.42);cursor:pointer}
+    .carousel-dots button.active{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.18)}
+    .gallery-info{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+    .info-card{background:#fffdf7;border:1px solid var(--line);padding:20px 22px;min-height:100%}
+    .info-card strong{display:block;text-transform:uppercase;letter-spacing:.18em;font-size:.65rem;color:var(--wine);margin-bottom:9px}
+    .info-card p{margin:0;color:#55645a;font-size:.93rem;line-height:1.7}
     .gallery-caption{color:#627069;font-size:.82rem;margin-top:16px}
     .event-section{background:var(--paper)}
     .event-card{display:grid;grid-template-columns:175px 1fr auto;align-items:center;gap:37px;border:1px solid var(--line);background:#f9f6ee;padding:28px 35px;margin-top:36px}
@@ -99,29 +114,28 @@
     .member-section h2{max-width:650px}
     .member-section p{color:#d5e0d7;line-height:1.9;max-width:580px;font-size:1.04rem;margin-top:23px}
     .member-card{background:#f5eedf;color:var(--pine);padding:41px;text-align:center;border:1px solid #c7b68f;box-shadow:12px 12px 0 #0e2b23}
-    .member-card .price{font:400 5.1rem/1 var(--font-serif);letter-spacing:-.065em}
-    .member-card .price small{font:700 1rem var(--font-sans)}
-    .member-card p{color:#627266;font-size:.86rem;line-height:1.7;margin:13px 0 25px}
-    .member-card .btn{width:100%}
-    .member-card .fineprint{display:block;font-size:.69rem;margin-top:14px;color:#748276}
-    .contact-section{padding:84px 0}
-    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-    .contact-grid p{color:#64736a;max-width:520px;line-height:1.85}
-    .contact-list{border-top:1px solid var(--line);margin-top:19px}
-    .contact-link{padding:16px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;transition:padding .2s}
-    .contact-link:hover{padding-left:5px}
-    .contact-link strong{font-size:.86rem;display:block;color:var(--pine)}
-    .contact-link span{font-size:.87rem;display:block;color:var(--wine);overflow-wrap:anywhere}
-    .contact-link .arrow{font-size:1.3rem;color:var(--wine);flex:none}
-    footer{background:var(--pine-deep);color:#d3dcd2;padding:35px 0}
-    .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:25px;flex-wrap:wrap}
-    .footer-name{font-family:var(--font-serif);font-size:1.23rem;color:#fff}
-    footer p{margin:5px 0 0;font-size:.77rem;color:#a4b4ab}
-    .footer-links{display:flex;gap:21px;font-size:.75rem}
-    .footer-links a:hover{text-decoration:underline;color:#fff}
-    @media(max-width:920px){.hero-inner{grid-template-columns:1fr 1fr;min-height:490px}.hero-copy{padding:68px 0}.hero-logo-frame{width:min(100%,380px)}.stamp{right:0}.story-grid{gap:35px}.event-card{grid-template-columns:135px 1fr;gap:25px}.event-pill{grid-column:2;justify-self:start}.member-grid{gap:30px}}
-    @media(max-width:680px){.shell{width:min(100% - 34px,1160px)}.topline{font-size:.6rem;letter-spacing:.12em}.nav{min-height:72px;align-items:flex-start;padding:12px 0;flex-wrap:wrap}.brand-logo{width:47px;height:47px}.brand-title{font-size:1.01rem}.brand-subtitle{font-size:.54rem}nav{width:100%;overflow:auto;justify-content:space-between;gap:16px;white-space:nowrap;padding-bottom:5px;font-size:.7rem}nav .nav-cta{padding:8px 12px}.hero-inner{display:flex;flex-direction:column;min-height:0;align-items:stretch}.hero-copy{padding:65px 0 0}.hero-copy h1{font-size:clamp(3.3rem,12vw,4.4rem);max-width:500px}.hero-lead{font-size:1rem}.hero-visual{height:335px;overflow:visible;margin:10px 0 0}.hero-logo-frame{width:min(68vw,270px);margin:auto;transform:rotate(2deg)}.hero-visual:before{top:0;right:20%;height:260px;width:260px}.stamp{bottom:17px;right:19px;transform:rotate(-5deg) scale(.8);transform-origin:bottom right}section{padding:71px 0}.section-top{display:block;margin-bottom:26px}.section-note{margin-top:15px}.story-grid,.member-grid,.contact-grid{grid-template-columns:1fr;gap:28px}.story-copy p{font-size:.99rem}.quote-card{min-height:0;padding:29px}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:270px 180px 180px;gap:9px}.photo:first-child{grid-column:span 2;grid-row:span 1}.photo:nth-child(4){grid-column:span 2}.photo-label{bottom:12px;left:13px;font-size:1.05rem}.event-card{grid-template-columns:78px 1fr;padding:20px;gap:17px}.event-date{padding-right:11px}.event-date strong{font-size:3.2rem}.event-details h3{font-size:1.5rem}.event-pill{grid-column:1/-1}.member-card{padding:33px;box-shadow:8px 8px 0 #0e2b23}.member-card .price{font-size:4.5rem}.contact-section{padding:70px 0}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.photo img,.btn{transition:none}}
+    .member-card .price{display:block;font-family:var(--font-serif);font-size:5.3rem;line-height:1;color:var(--wine);margin:14px 0 8px}
+    .member-card .price small{font-size:1.18rem;font-family:var(--font-sans);font-weight:700;color:#6b5a42}
+    .member-card p{margin:12px auto 24px;color:#506055;max-width:320px}
+    .fineprint{display:block;margin-top:16px;color:#6d6d5f;font-size:.78rem}
+    .contact-section{background:#f1ecdf;padding:95px 0 110px}
+    .contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:65px;align-items:start}
+    .contact-grid p{font-size:1.02rem;line-height:1.9;color:#546258}
+    .contact-list{display:grid;gap:18px;margin-top:28px}
+    .contact-link{display:flex;align-items:center;justify-content:space-between;gap:18px;background:#fffdf8;border:1px solid var(--line);padding:20px 22px;transition:transform .2s,border-color .2s,box-shadow .2s}
+    .contact-link:hover{transform:translateY(-2px);border-color:#c4b79d;box-shadow:var(--shadow)}
+    .contact-link strong{display:block;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--wine);margin-bottom:5px}
+    .contact-link .arrow{font-size:1.1rem;color:var(--wine);flex-shrink:0}
+    footer{background:var(--pine-deep);color:#d4ddd6;padding:26px 0}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+    .footer-name{font-family:var(--font-serif);font-size:1.2rem;color:#fff}
+    .footer-inner p{margin:6px 0 0;font-size:.88rem;color:#bbcac0}
+    .footer-links{display:flex;gap:20px;flex-wrap:wrap;font-size:.85rem}
+    .footer-links a:hover{color:#fff}
+    @media(max-width:1050px){.hero-inner{grid-template-columns:1fr 1fr;gap:32px;min-height:530px}.story-grid{gap:35px}.event-card{grid-template-columns:135px 1fr;gap:25px}.event-pill{grid-column:2;justify-self:start}.member-grid{gap:30px}}
+    @media(max-width:820px){.hero-inner{display:flex;flex-direction:column;align-items:stretch;min-height:0}.hero-copy{padding:65px 0 0}.hero-visual{padding:20px 0 60px}.hero-stack{width:min(100%,560px)}.hero-photo{aspect-ratio:4/3}.hero-logo-chip{left:12px;bottom:-22px;width:110px}.hero-card{right:12px;bottom:10px;max-width:210px}.story-grid,.member-grid,.contact-grid{grid-template-columns:1fr;gap:30px}.gallery-info{grid-template-columns:1fr}}
+    @media(max-width:680px){.shell{width:min(100% - 34px,1160px)}.topline{font-size:.6rem;letter-spacing:.12em}.nav{min-height:72px;align-items:flex-start;padding:12px 0;flex-wrap:wrap}.brand-logo{width:47px;height:47px}.brand-title{font-size:1.01rem}.brand-subtitle{font-size:.54rem}nav{width:100%;overflow:auto;justify-content:space-between;gap:16px;white-space:nowrap;padding-bottom:5px;font-size:.7rem}nav .nav-cta{padding:8px 12px}h1{font-size:clamp(3.2rem,12vw,4.4rem)}section{padding:72px 0}.section-top{display:block;margin-bottom:26px}.section-note{margin-top:15px}.story-copy p{font-size:.99rem}.quote-card{min-height:0;padding:29px}.carousel{aspect-ratio:4/5}.slide-caption{left:18px;right:18px;bottom:32px}.slide-caption strong{font-size:1.45rem}.slide-caption span{font-size:.8rem}.carousel-btn{width:42px;height:42px}.carousel-btn.prev{left:10px}.carousel-btn.next{right:10px}.event-card{grid-template-columns:78px 1fr;padding:20px;gap:17px}.event-date{padding-right:11px}.event-date strong{font-size:3.2rem}.event-details h3{font-size:1.5rem}.event-pill{grid-column:1/-1}.member-card{padding:33px;box-shadow:8px 8px 0 #0e2b23}.member-card .price{font-size:4.5rem}.contact-section{padding:70px 0}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.slide{transition:none}}
   </style>
 </head>
 <body>
@@ -147,45 +161,114 @@
         <div class="hero-copy">
           <div class="eyebrow">Est. 2025 · Neustadt / Weinstraße</div>
           <h1 id="hero-title">Ein alter Wagen.<em>Viele neue Geschichten.</em></h1>
-          <p class="hero-lead">Ein Stück Geschichte, das weiterleben soll. Mit Herzblut, Gemeinschaft und guten Ideen hauchen wir unserem historischen Wagen neues Leben ein.</p>
-          <div class="buttons"><a class="btn btn-cream" href="#wagen">Unser Projekt <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="#bilder">Bilder ansehen <span aria-hidden="true">↓</span></a></div>
+          <p class="hero-lead">Ein Stück Geschichte, das weiterleben soll: als Treffpunkt, als Ort für schöne Abende und als gemeinsames Projekt. Mit Herzblut, Gemeinschaft und guten Ideen hauchen wir unserem historischen Wagen neues Leben ein.</p>
+          <div class="buttons">
+            <a class="btn btn-cream" href="#bilder">Bilder ansehen <span aria-hidden="true">↓</span></a>
+            <a class="btn btn-outline" href="#termine">Zum nächsten Termin <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
         <div class="hero-visual">
-          <div class="hero-logo-frame">
-            <img src="bilder/logo-neustadter-kompanie.jpg" alt="Wappen der Neustadter Kompanie: historischer grüner Wagen, seit 2025" width="640" height="640" fetchpriority="high">
+          <div class="hero-stack">
+            <div class="stamp">Ein Stück Geschichte<strong>seit ca. 1950</strong></div>
+            <div class="hero-photo">
+              <img src="bilder/wagen-nacht.png" alt="Beleuchteter historischer Wagen nachts am Gleis" width="1448" height="1086" fetchpriority="high">
+            </div>
+            <div class="hero-logo-chip"><img src="bilder/logo-neustadter-kompanie.jpg" alt="Wappen der Neustadter Kompanie"></div>
+            <div class="hero-card"><strong>Neu auf der Website</strong><p>Mit automatischem Bilderkarussell und ersten echten Einblicken in unseren Wagen.</p></div>
           </div>
-          <div class="stamp">Ein Stück Geschichte<strong>seit ca. 1950</strong></div>
         </div>
       </div>
     </section>
     <div class="line" aria-hidden="true"></div>
+
     <section id="wagen" aria-labelledby="wagen-title">
       <div class="shell story-grid">
-        <div class="story-copy"><span class="kicker">01 / Unsere Geschichte</span><h2 id="wagen-title">Alte Substanz.<br>Neue Ideen.</h2><p>Unser Wagen stammt ungefähr aus der Zeit um <strong>1950</strong>. Für uns ist er mehr als ein altes Stück Eisenbahn: Er ist ein Ort, an dem Menschen zusammenkommen, Geschichten erzählen und gemeinsam etwas auf die Beine stellen.</p><p>Mit der <strong>Neustadter Kompanie</strong> möchten wir den Wagen Schritt für Schritt erhalten, renovieren und mit neuem Leben füllen. Die Einnahmen unserer Veranstaltungen fließen in dieses gemeinsame Projekt.</p></div>
+        <div class="story-copy">
+          <span class="kicker">01 / Unsere Geschichte</span>
+          <h2 id="wagen-title">Alte Substanz.<br>Neue Ideen.</h2>
+          <p>Unser Wagen stammt ungefähr aus der Zeit um <strong>1950</strong>. Für uns ist er mehr als ein altes Stück Eisenbahn: Er ist ein Ort, an dem Menschen zusammenkommen, Geschichten erzählen und gemeinsam etwas auf die Beine stellen.</p>
+          <p>Mit der <strong>Neustadter Kompanie</strong> möchten wir den Wagen Schritt für Schritt erhalten, renovieren und mit neuem Leben füllen. Die Einnahmen unserer Veranstaltungen fließen in dieses gemeinsame Projekt.</p>
+        </div>
         <aside class="quote-card"><p>Was uns verbindet, ist nicht nur ein Wagen. Es sind die Menschen drumherum.</p><small>Neustadter Kompanie · Seit 2025</small></aside>
       </div>
     </section>
+
     <section class="gallery-section" id="bilder" aria-labelledby="bilder-title">
       <div class="shell">
-        <div class="section-top"><div><span class="kicker">02 / Einblicke</span><h2 id="bilder-title">Momente rund<br>um den Wagen.</h2></div><p class="section-note">Hier kommen bald unsere eigenen Fotos hinein – vom Wagen, der Renovierung und unseren gemeinsamen Festen.</p></div>
-        <div class="gallery-grid" aria-label="Fotogalerie mit derzeitigen Platzhaltern">
-          <!-- Eigene Fotos einfach mit diesen Dateinamen in den Ordner "bilder" hochladen. -->
-          <div class="photo"><img src="bilder/wagen-aussen.jpg" onerror="this.onerror=null;this.src='bilder/platzhalter-aussen.svg'" alt="Platzhalter für ein Foto der Außenansicht unseres Wagens" loading="lazy"><div class="photo-label"><small>01 / Unser Projekt</small>Der Wagen</div></div>
-          <div class="photo"><img src="bilder/wagen-innen.jpg" onerror="this.onerror=null;this.src='bilder/platzhalter-innen.svg'" alt="Platzhalter für ein Foto aus dem Wageninneren" loading="lazy"><div class="photo-label"><small>02 / Einblicke</small>Innenleben</div></div>
-          <div class="photo"><img src="bilder/renovierung.jpg" onerror="this.onerror=null;this.src='bilder/platzhalter-restaurierung.svg'" alt="Platzhalter für ein Foto der Renovierungsarbeiten" loading="lazy"><div class="photo-label"><small>03 / Wir packen an</small>Renovierung</div></div>
-          <div class="photo"><img src="bilder/gemeinschaft.jpg" onerror="this.onerror=null;this.src='bilder/platzhalter-gemeinschaft.svg'" alt="Platzhalter für ein Foto eines gemeinsamen Festes" loading="lazy"><div class="photo-label"><small>04 / Gemeinsam</small>Unsere Veranstaltungen</div></div>
+        <div class="section-top">
+          <div><span class="kicker">02 / Einblicke</span><h2 id="bilder-title">Momente rund<br>um den Wagen.</h2></div>
+          <p class="section-note">Hier laufen die Bilder automatisch durch. Alle verwendeten Fotos mit Personen wurden für die Website unkenntlich gemacht.</p>
         </div>
-        <p class="gallery-caption">Hinweis: Die gezeigten Grafiken sind Platzhalter, bis wir echte Bilder unseres Wagens ergänzt haben.</p>
+
+        <div class="carousel-wrap" data-carousel>
+          <div class="carousel" aria-label="Bilderkarussell der Neustadter Kompanie">
+            <article class="slide active">
+              <img src="bilder/wagen-nacht.png" alt="Beleuchteter historischer Wagen nachts am Bahnsteig" loading="eager">
+              <div class="slide-caption"><strong>Unser Wagen bei Nacht</strong><span>Außenansicht unseres historischen Wagens – stimmungsvoll beleuchtet direkt am Gleis.</span></div>
+            </article>
+            <article class="slide">
+              <img src="bilder/party-im-wagen-anonym.png" alt="Anonymisierte Gruppenaufnahme im Wageninneren" loading="lazy">
+              <div class="slide-caption"><strong>Gemeinschaft im Wagen</strong><span>Gemeinsame Momente machen aus dem Wagen einen besonderen Treffpunkt.</span></div>
+            </article>
+            <article class="slide">
+              <img src="bilder/bar-im-wagen-anonym.png" alt="Anonymisierte Bar-Szene mit bunten Lichtern im Wagen" loading="lazy">
+              <div class="slide-caption"><strong>Gemütliche Abende</strong><span>Bunte Lichter, gute Gespräche und eine besondere Atmosphäre im Inneren unseres Wagens.</span></div>
+            </article>
+            <article class="slide">
+              <img src="bilder/neon-bar-detail.png" alt="Bar-Detail mit Getränken und Lichterkette im Wagen" loading="lazy">
+              <div class="slide-caption"><strong>Details mit Charakter</strong><span>Viele kleine Ecken geben dem Wagen seinen ganz eigenen Charme.</span></div>
+            </article>
+            <article class="slide">
+              <img src="bilder/kronkorken-mood.png" alt="Detailaufnahme einer Theke mit bunten Kronkorken" loading="lazy">
+              <div class="slide-caption"><strong>Stimmung &amp; Persönlichkeit</strong><span>Auch kleine Details erzählen etwas über unseren Wagen und unsere Abende dort.</span></div>
+            </article>
+            <article class="slide">
+              <img src="bilder/jack-coke-gleis.png" alt="Getränkeglas im Sonnenlicht am Wagen entlang der Gleise" loading="lazy">
+              <div class="slide-caption"><strong>Zwischen Gleis und Geschichte</strong><span>Der Wagen lebt von besonderen Blickwinkeln – drinnen wie draußen.</span></div>
+            </article>
+            <article class="slide">
+              <img src="bilder/lasernebel-anonym.png" alt="Anonymisierte Silhouette in Nebel und Laserlicht" loading="lazy">
+              <div class="slide-caption"><strong>Veranstaltungen mit Atmosphäre</strong><span>Von ruhigen Abenden bis zu besonderen Feiern – der Wagen bietet den passenden Rahmen.</span></div>
+            </article>
+
+            <button class="carousel-btn prev" type="button" aria-label="Vorheriges Bild">❮</button>
+            <button class="carousel-btn next" type="button" aria-label="Nächstes Bild">❯</button>
+            <div class="carousel-dots" aria-label="Bilder auswählen"></div>
+          </div>
+        </div>
+
+        <div class="gallery-info">
+          <article class="info-card"><strong>Automatisch</strong><p>Das Karussell läuft von selbst durch. Besucher können aber auch manuell vor und zurück klicken.</p></article>
+          <article class="info-card"><strong>Datenschutz</strong><p>Alle Bilder mit Personen wurden für die öffentliche Website anonymisiert, damit niemand erkennbar ist.</p></article>
+          <article class="info-card"><strong>Später austauschbar</strong><p>Neue Bilder können wir jederzeit ergänzen oder gegen bessere Aufnahmen austauschen – ohne das Design neu zu bauen.</p></article>
+        </div>
+        <p class="gallery-caption">Tipp: Wenn du später weitere Fotos hochlädst, können wir das Karussell jederzeit erweitern.</p>
       </div>
     </section>
+
     <section class="event-section" id="termine" aria-labelledby="termine-title">
-      <div class="shell"><span class="kicker">03 / Zusammenkommen</span><h2 id="termine-title">Das nächste Fest.</h2>
-        <article class="event-card"><div class="event-date" aria-label="4. Dezember 2026"><strong>04</strong><span>Dez 2026</span></div><div class="event-details"><span class="event-kicker">Freitag · Save the Date</span><h3>Weihnachtsfeier am Wagen</h3><p>Ein gemütlicher Jahresausklang mit der Neustadter Kompanie. Weitere Informationen folgen.</p></div><span class="event-pill">Wir freuen uns auf euch</span></article>
+      <div class="shell">
+        <span class="kicker">03 / Zusammenkommen</span>
+        <h2 id="termine-title">Das nächste Fest.</h2>
+        <article class="event-card">
+          <div class="event-date" aria-label="4. Dezember 2026"><strong>04</strong><span>Dez 2026</span></div>
+          <div class="event-details"><span class="event-kicker">Freitag · Save the Date</span><h3>Weihnachtsfeier am Wagen</h3><p>Ein gemütlicher Jahresausklang mit der Neustadter Kompanie. Weitere Informationen folgen.</p></div>
+          <span class="event-pill">Wir freuen uns auf euch</span>
+        </article>
       </div>
     </section>
+
     <section class="member-section" id="mitmachen" aria-labelledby="mitmachen-title">
-      <div class="shell member-grid"><div><span class="kicker">04 / Dabei sein</span><h2 id="mitmachen-title">Gemeinsam geht<br>mehr.</h2><p>Ob beim Anpacken, bei unseren Festen oder einfach als Unterstützer: Die Neustadter Kompanie lebt von Menschen, die dabei sind. Mit einer Mitgliedschaft helft ihr, unseren historischen Wagen zu erhalten.</p></div><div class="member-card"><span class="kicker">Mitglied werden</span><div class="price">2 € <small>/ Monat</small></div><p>Ein kleiner Beitrag für ein großes gemeinsames Projekt.</p><a class="btn btn-wine" href="mailto:mitglied-werden@neustadter-kompanie.de?subject=Anfrage%20zur%20Mitgliedschaft">Interesse? Meldet euch <span aria-hidden="true">↗</span></a><span class="fineprint">Weitere Informationen zur Mitgliedschaft auf Anfrage</span></div></div>
+      <div class="shell member-grid">
+        <div>
+          <span class="kicker">04 / Dabei sein</span>
+          <h2 id="mitmachen-title">Gemeinsam geht<br>mehr.</h2>
+          <p>Ob beim Anpacken, bei unseren Festen oder einfach als Unterstützer: Die Neustadter Kompanie lebt von Menschen, die dabei sind. Mit einer Mitgliedschaft helft ihr, unseren historischen Wagen zu erhalten.</p>
+        </div>
+        <div class="member-card"><span class="kicker">Mitglied werden</span><div class="price">2 € <small>/ Monat</small></div><p>Ein kleiner Beitrag für ein großes gemeinsames Projekt.</p><a class="btn btn-wine" href="mailto:mitglied-werden@neustadter-kompanie.de?subject=Anfrage%20zur%20Mitgliedschaft">Interesse? Meldet euch <span aria-hidden="true">↗</span></a><span class="fineprint">Weitere Informationen zur Mitgliedschaft auf Anfrage</span></div>
+      </div>
     </section>
+
     <section class="contact-section" id="kontakt" aria-labelledby="kontakt-title">
       <div class="shell contact-grid">
         <div><span class="kicker">05 / Kontakt</span><h2 id="kontakt-title">Fragen? Ideen?<br>Einfach melden.</h2></div>
@@ -200,6 +283,52 @@
       </div>
     </section>
   </main>
-  <footer><div class="shell footer-inner"><div><div class="footer-name">Neustadter Kompanie</div><p>Ein historischer Wagen. Eine lebendige Gemeinschaft.</p></div><div class="footer-links"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="#start">Nach oben ↑</a></div></div></footer>
+
+  <footer>
+    <div class="shell footer-inner"><div><div class="footer-name">Neustadter Kompanie</div><p>Ein historischer Wagen. Eine lebendige Gemeinschaft.</p></div><div class="footer-links"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="#start">Nach oben ↑</a></div></div>
+  </footer>
+
+  <script>
+    (function(){
+      const root = document.querySelector('[data-carousel]');
+      if(!root) return;
+      const slides = Array.from(root.querySelectorAll('.slide'));
+      const prevBtn = root.querySelector('.prev');
+      const nextBtn = root.querySelector('.next');
+      const dotsWrap = root.querySelector('.carousel-dots');
+      let index = 0;
+      let timer;
+
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', 'Bild ' + (i + 1) + ' anzeigen');
+        dot.addEventListener('click', () => { goTo(i); restart(); });
+        dotsWrap.appendChild(dot);
+      });
+      const dots = Array.from(dotsWrap.querySelectorAll('button'));
+
+      function render(){
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+      }
+      function goTo(i){ index = (i + slides.length) % slides.length; render(); }
+      function next(){ goTo(index + 1); }
+      function prev(){ goTo(index - 1); }
+      function start(){ timer = setInterval(next, 5000); }
+      function stop(){ clearInterval(timer); }
+      function restart(){ stop(); start(); }
+
+      prevBtn.addEventListener('click', () => { prev(); restart(); });
+      nextBtn.addEventListener('click', () => { next(); restart(); });
+      root.addEventListener('mouseenter', stop);
+      root.addEventListener('mouseleave', start);
+      root.addEventListener('focusin', stop);
+      root.addEventListener('focusout', start);
+
+      render();
+      start();
+    })();
+  </script>
 </body>
 </html>
