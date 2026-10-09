@@ -90,8 +90,8 @@
     .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:48px;height:48px;border:none;border-radius:50%;background:rgba(16,45,37,.76);color:#fff;cursor:pointer;display:grid;place-items:center;font-size:1.2rem;transition:background .2s,transform .2s}
     .carousel-btn:hover{background:rgba(16,45,37,.95);transform:translateY(-50%) scale(1.04)}
     .carousel-btn.prev{left:18px}.carousel-btn.next{right:18px}
-    .carousel-dots{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);display:flex;gap:9px;z-index:3}
-    .carousel-dots button{width:11px;height:11px;border-radius:50%;border:none;padding:0;background:rgba(255,255,255,.42);cursor:pointer}
+    .carousel-dots{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);display:flex;gap:6px;z-index:3;max-width:calc(100% - 34px);flex-wrap:wrap;justify-content:center}
+    .carousel-dots button{width:9px;height:9px;border-radius:50%;border:none;padding:0;background:rgba(255,255,255,.42);cursor:pointer}
     .carousel-dots button.active{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.18)}
     .gallery-caption{color:#627069;font-size:.82rem;margin-top:16px}
     .event-section{background:var(--paper)}
@@ -167,7 +167,7 @@
           <div class="hero-stack">
             <div class="stamp">Ein Stück Geschichte<strong>seit ca. 1950</strong></div>
             <div class="hero-photo">
-              <img src="bilder/wagen-nacht.png" alt="Beleuchteter historischer Wagen nachts am Gleis" width="1448" height="1086" fetchpriority="high">
+              <img src="bilder/wagen-nacht.webp" alt="Beleuchteter historischer Wagen nachts am Gleis" width="1448" height="1086" fetchpriority="high">
             </div>
             <div class="hero-logo-chip"><img src="bilder/logo-neustadter-kompanie.jpg" alt="Wappen der Neustadter Kompanie"></div>
             <div class="hero-card"><strong>Unser Treffpunkt</strong><p>Wo Eisenbahngeschichte, gute Gespräche und Gemeinschaft zusammenkommen.</p></div>
@@ -199,32 +199,73 @@
         <div class="carousel-wrap" data-carousel>
           <div class="carousel" aria-label="Bilderkarussell der Neustadter Kompanie">
             <article class="slide active">
-              <img src="bilder/wagen-nacht.png" alt="Beleuchteter historischer Wagen nachts am Bahnsteig" loading="eager">
+              <img src="bilder/wagen-nacht.webp" alt="Beleuchteter historischer Wagen nachts am Bahnsteig" loading="eager">
               <div class="slide-caption"><strong>Unser Wagen bei Nacht</strong><span>Außenansicht unseres historischen Wagens – stimmungsvoll beleuchtet direkt am Gleis.</span></div>
             </article>
             <article class="slide">
-              <img src="bilder/party-im-wagen-anonym.png" alt="Gemeinsamer Abend rund um die Theke im Wageninneren" loading="lazy">
+              <img src="bilder/party-im-wagen.webp" alt="Gemeinsamer Abend rund um die Theke im Wageninneren" loading="lazy" decoding="async">
               <div class="slide-caption"><strong>Gemeinschaft im Wagen</strong><span>Gemeinsame Momente machen aus dem Wagen einen besonderen Treffpunkt.</span></div>
             </article>
             <article class="slide">
-              <img src="bilder/bar-im-wagen-anonym.png" alt="Bunt beleuchtete Theke mit Gästen im Wageninneren" loading="lazy">
+              <img src="bilder/bar-im-wagen.webp" alt="Bunt beleuchtete Theke mit Gästen im Wageninneren" loading="lazy" decoding="async">
               <div class="slide-caption"><strong>Gemütliche Abende</strong><span>Bunte Lichter, gute Gespräche und eine besondere Atmosphäre im Inneren unseres Wagens.</span></div>
             </article>
             <article class="slide">
-              <img src="bilder/neon-bar-detail.png" alt="Bar-Detail mit Getränken und Lichterkette im Wagen" loading="lazy">
+              <img src="bilder/neon-bar-detail.webp" alt="Bar-Detail mit Getränken und Lichterkette im Wagen" loading="lazy" decoding="async">
               <div class="slide-caption"><strong>Details mit Charakter</strong><span>Viele kleine Ecken geben dem Wagen seinen ganz eigenen Charme.</span></div>
             </article>
             <article class="slide">
-              <img src="bilder/kronkorken-mood.png" alt="Detailaufnahme einer Theke mit bunten Kronkorken" loading="lazy">
+              <img src="bilder/kronkorken-mood.webp" alt="Detailaufnahme einer Theke mit bunten Kronkorken" loading="lazy" decoding="async">
               <div class="slide-caption"><strong>Stimmung &amp; Persönlichkeit</strong><span>Auch kleine Details erzählen etwas über unseren Wagen und unsere Abende dort.</span></div>
             </article>
             <article class="slide">
-              <img src="bilder/jack-coke-gleis.png" alt="Getränkeglas im Sonnenlicht am Wagen entlang der Gleise" loading="lazy">
+              <img src="bilder/jack-coke-gleis.webp" alt="Getränkeglas im Sonnenlicht am Wagen entlang der Gleise" loading="lazy" decoding="async">
               <div class="slide-caption"><strong>Zwischen Gleis und Geschichte</strong><span>Der Wagen lebt von besonderen Blickwinkeln – drinnen wie draußen.</span></div>
             </article>
             <article class="slide">
-              <img src="bilder/lasernebel-anonym.png" alt="Nebel und Laserlicht bei einer Feier im Wagen" loading="lazy">
+              <img src="bilder/lasernebel.webp" alt="Nebel und Laserlicht bei einer Feier im Wagen" loading="lazy" decoding="async">
               <div class="slide-caption"><strong>Veranstaltungen mit Atmosphäre</strong><span>Von ruhigen Abenden bis zu besonderen Feiern – der Wagen bietet den passenden Rahmen.</span></div>
+            </article>
+
+            <article class="slide">
+              <img src="bilder/tresen-kronkorken.webp" alt="Foto aus dem historischen Wagen der Neustadter Kompanie: Unsere Theke im Detail" loading="lazy" decoding="async">
+              <div class="slide-caption"><strong>Unsere Theke im Detail</strong><span>Eine Theke voller bunter Kronkorken – jedes Stück gehört zur Geschichte unseres Wagens.</span></div>
+            </article>
+            <article class="slide">
+              <img src="bilder/wagen-aussen-tag.webp" alt="Foto aus dem historischen Wagen der Neustadter Kompanie: Unser Wagen am Bahnsteig" loading="lazy" decoding="async">
+              <div class="slide-caption"><strong>Unser Wagen am Bahnsteig</strong><span>Ein Blick auf den historischen Wagen und seine charakteristische Außenansicht.</span></div>
+            </article>
+            <article class="slide">
+              <img src="bilder/einstieg-holzstufen.webp" alt="Foto aus dem historischen Wagen der Neustadter Kompanie: Schritt für Schritt" loading="lazy" decoding="async">
+              <div class="slide-caption"><strong>Schritt für Schritt</strong><span>Auch die kleinen Arbeiten am Wagen gehören zu unserem gemeinsamen Projekt.</span></div>
+            </article>
+            <article class="slide">
+              <img src="bilder/wagen-innen-hell.webp" alt="Foto aus dem historischen Wagen der Neustadter Kompanie: Ein Blick ins Innere" loading="lazy" decoding="async">
+              <div class="slide-caption"><strong>Ein Blick ins Innere</strong><span>Sitzplätze, Theke und viele kleine Details geben dem Wagen seinen Charakter.</span></div>
+            </article>
+            <article class="slide">
+              <img src="bilder/treffpunkt-theke.webp" alt="Foto aus dem historischen Wagen der Neustadter Kompanie: An der Theke" loading="lazy" decoding="async">
+              <div class="slide-caption"><strong>An der Theke</strong><span>Wo man zusammenkommt, erzählt und eine gute Zeit verbringt.</span></div>
+            </article>
+            <article class="slide">
+              <img src="bilder/wagen-weihnachtsbeleuchtung.webp" alt="Foto aus dem historischen Wagen der Neustadter Kompanie: Der Wagen im Lichterglanz" loading="lazy" decoding="async">
+              <div class="slide-caption"><strong>Der Wagen im Lichterglanz</strong><span>Auch von außen sorgt unsere Beleuchtung für eine besondere Stimmung.</span></div>
+            </article>
+            <article class="slide">
+              <img src="bilder/wagen-weihnachtsdeko.webp" alt="Foto aus dem historischen Wagen der Neustadter Kompanie: Weihnachten im Wagen" loading="lazy" decoding="async">
+              <div class="slide-caption"><strong>Weihnachten im Wagen</strong><span>Mit Weihnachtsbäumen und Lichterketten wird es besonders gemütlich.</span></div>
+            </article>
+            <article class="slide">
+              <img src="bilder/weihnachtsfeier-im-wagen.webp" alt="Foto aus dem historischen Wagen der Neustadter Kompanie: Gemeinsame Feiern" loading="lazy" decoding="async">
+              <div class="slide-caption"><strong>Gemeinsame Feiern</strong><span>Bunte Beleuchtung und viele schöne Abende gehören bei uns dazu.</span></div>
+            </article>
+            <article class="slide">
+              <img src="bilder/essen-am-wagen.webp" alt="Foto aus dem historischen Wagen der Neustadter Kompanie: Gemeinsam genießen" loading="lazy" decoding="async">
+              <div class="slide-caption"><strong>Gemeinsam genießen</strong><span>Bei unseren Veranstaltungen darf natürlich auch das Essen nicht fehlen.</span></div>
+            </article>
+            <article class="slide">
+              <img src="bilder/party-lichtnebel.webp" alt="Foto aus dem historischen Wagen der Neustadter Kompanie: Licht und Atmosphäre" loading="lazy" decoding="async">
+              <div class="slide-caption"><strong>Licht und Atmosphäre</strong><span>Wenn unser Wagen in buntes Licht getaucht ist.</span></div>
             </article>
 
             <button class="carousel-btn prev" type="button" aria-label="Vorheriges Bild">❮</button>
@@ -306,7 +347,7 @@
       function goTo(i){ index = (i + slides.length) % slides.length; render(); }
       function next(){ goTo(index + 1); }
       function prev(){ goTo(index - 1); }
-      function start(){ timer = setInterval(next, 5000); }
+      function start(){ stop(); if(!document.hidden && !window.matchMedia("(prefers-reduced-motion: reduce)").matches){ timer = setInterval(next, 5000); } }
       function stop(){ clearInterval(timer); }
       function restart(){ stop(); start(); }
 
@@ -317,6 +358,7 @@
       root.addEventListener('focusin', stop);
       root.addEventListener('focusout', start);
 
+      document.addEventListener("visibilitychange", () => { document.hidden ? stop() : start(); });
       render();
       start();
     })();
