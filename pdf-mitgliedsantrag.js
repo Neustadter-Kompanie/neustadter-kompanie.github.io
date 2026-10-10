@@ -130,7 +130,7 @@
   async function loadLogo(){
     try{
       const image = new Image();
-      image.src = 'bilder/logo-neustadter-kompanie.png';
+      image.src = 'bilder/logo-neustadter-kompanie.png?v=20261010a';
       await image.decode();
       const canvas = document.createElement('canvas');
       canvas.width = 640;
@@ -162,7 +162,8 @@
     submitButton.disabled=true;submitButton.textContent='PDF wird erstellt …';
     try{
       const logo=await loadLogo();
-      const blob=makePDF(generateCommands(data,!!logo),logo);
+      if (!logo) throw new Error('Das Vereinswappen fehlt oder konnte nicht geladen werden.');
+      const blob=makePDF(generateCommands(data,true),logo);
       const url=URL.createObjectURL(blob);
       const link=document.createElement('a');
       link.href=url;
