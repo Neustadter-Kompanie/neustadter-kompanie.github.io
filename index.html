@@ -161,6 +161,10 @@
     .btn-calendar:hover{background:#f7f3e8}
     @media(max-width:1050px){.event-card{grid-template-columns:90px minmax(0,1fr);gap:19px}.event-actions{grid-column:2;flex-direction:row;align-items:center;flex-wrap:wrap}.calendar-subscribe{grid-template-columns:1fr}}
     @media(max-width:680px){.event-year-head{margin:31px 0 15px}.event-card{grid-template-columns:73px minmax(0,1fr);gap:15px;padding:18px 15px}.event-date{padding-right:11px}.event-date strong{font-size:3rem}.event-details h3{font-size:1.35rem}.event-actions{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;gap:10px}.event-download{width:100%}.calendar-subscribe{padding:22px}.calendar-buttons .btn{white-space:normal}}
+    /* Diskreter Zugang zum Gremiumsbereich */
+    nav .gremium-link{color:#171717;white-space:nowrap}
+    nav .gremium-link span{font-size:.72em;font-weight:500;color:#9a9a9a;letter-spacing:0;text-transform:none}
+    nav .gremium-link:hover{color:var(--wine)}
   </style>
 
   
@@ -182,6 +186,7 @@
         <a href="#wagen">Der Wagen</a>
         <a href="#bilder">Einblicke</a>
         <a href="#termine">Termine</a>
+        <a class="gremium-link" href="/intern/" aria-label="Gremium – interner Bereich">Gremium <span>/intern</span></a>
         <a class="nav-cta" href="#mitmachen">Mitmachen ↗</a>
       </nav>
     </div>
