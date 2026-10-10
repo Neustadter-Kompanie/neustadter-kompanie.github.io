@@ -15,6 +15,7 @@
   function selectedType() { return typeInputs.find(input => input.checked)?.value || 'einzel'; }
   function updateType() {
     const family = selectedType() === 'familie';
+    typeInputs.forEach(input => input.closest('.choice').classList.toggle('selected',input.checked));
     familyBlock.hidden = !family;
     familyNames.required = family;
     lastStep.textContent = family ? '4' : '3';
@@ -129,9 +130,12 @@
   // Nur für den PDF-Export erfolgt die JPEG-Konvertierung lokal im Browser.
   async function loadLogo(){
     try{
-      const image = new Image();
-      image.src = 'bilder/logo-neustadter-kompanie.png?v=20261010a';
-      await image.decode();
+      // Verwende das bereits eingebettete freigestellte Wappen aus der Kopfzeile.
+      // So funktioniert die PDF auch ohne separate PNG-Datei in GitHub.
+      const image = document.querySelector('header .brand img');
+      if (!image) throw new Error('Wappen-Element nicht gefunden');
+      if (!image.complete || image.naturalWidth === 0) await image.decode();
+      if (!image.naturalWidth) throw new Error('Wappen konnte nicht geladen werden');
       const canvas = document.createElement('canvas');
       canvas.width = 640;
       canvas.height = 640;
@@ -175,7 +179,7 @@
       result.scrollIntoView({behavior:'smooth',block:'nearest'});
     }catch(error){
       console.error('PDF konnte nicht erstellt werden:',error);
-      alert('Das PDF konnte nicht erstellt werden. Bitte versuche es erneut oder schreibe uns an info@neustadter-kompanie.de.');
+      alert('Der PDF-Download hat leider nicht funktioniert. Bitte lade die Seite neu oder kontaktiere info@neustadter-kompanie.de.');
     }finally{submitButton.disabled=false;submitButton.textContent='Fördermitgliedsantrag als PDF herunterladen ↓';}
   });
 })();
