@@ -132,6 +132,32 @@
     @media(max-width:820px){.hero-inner{display:flex;flex-direction:column;align-items:stretch;min-height:0}.hero-copy{padding:65px 0 0}.hero-visual{padding:20px 0 60px}.hero-stack{width:min(100%,560px)}.hero-photo{aspect-ratio:4/3}.hero-logo-chip{left:12px;bottom:-22px;width:110px}.hero-card{right:12px;bottom:10px;max-width:210px}.story-grid,.member-grid,.contact-grid{grid-template-columns:1fr;gap:30px}}
     @media(max-width:680px){.shell{width:min(100% - 34px,1160px)}.topline{font-size:.6rem;letter-spacing:.12em}.nav{min-height:72px;align-items:flex-start;padding:12px 0;flex-wrap:wrap}.brand-logo{width:47px;height:47px}.brand-title{font-size:1.01rem}.brand-subtitle{font-size:.54rem}nav{width:100%;overflow:auto;justify-content:space-between;gap:16px;white-space:nowrap;padding-bottom:5px;font-size:.7rem}nav .nav-cta{padding:8px 12px}h1{font-size:clamp(3.2rem,12vw,4.4rem)}section{padding:72px 0}.section-top{display:block;margin-bottom:26px}.section-note{margin-top:15px}.story-copy p{font-size:.99rem}.quote-card{min-height:0;padding:29px}.carousel{aspect-ratio:4/5}.slide-caption{left:18px;right:18px;bottom:32px}.slide-caption strong{font-size:1.45rem}.slide-caption span{font-size:.8rem}.carousel-btn{width:42px;height:42px}.carousel-btn.prev{left:10px}.carousel-btn.next{right:10px}.event-card{grid-template-columns:78px 1fr;padding:20px;gap:17px}.event-date{padding-right:11px}.event-date strong{font-size:3.2rem}.event-details h3{font-size:1.5rem}.event-pill{grid-column:1/-1}.member-card{padding:33px;box-shadow:8px 8px 0 #0e2b23}.member-card .price{font-size:4.5rem}.contact-section{padding:70px 0}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.slide{transition:none}}
+
+    /* Veranstaltungskalender */
+    .event-section .section-top{margin-bottom:28px}
+    .event-year-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding:8px 1px 14px;margin:36px 0 18px}
+    .event-year-head span:first-child{font:400 2.1rem/1.1 var(--font-serif);color:var(--pine)}
+    .event-year-head span:last-child{text-transform:uppercase;font-size:.68rem;letter-spacing:.15em;font-weight:800;color:var(--wine)}
+    .event-card{grid-template-columns:108px minmax(0,1fr) 216px;gap:26px;margin-top:13px;padding:25px 27px;border-left:3px solid var(--brass)}
+    .event-card:first-of-type{border-left-color:var(--wine)}
+    .event-date{padding-right:17px}
+    .event-date strong{font-size:3.65rem}
+    .event-date span{font-size:.66rem}
+    .event-details h3{font-size:1.72rem}
+    .event-details p{line-height:1.6}
+    .event-actions{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+    .event-pill{display:inline-block;font-size:.62rem}
+    .event-download{background:var(--pine);color:#fff;padding:12px 15px;font-size:.72rem;font-weight:700;line-height:1.35;text-align:center;transition:background .2s}
+    .event-download:hover{background:var(--wine)}
+    .calendar-subscribe{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:30px;margin-top:35px;padding:30px;background:#eee8da;border:1px solid var(--line)}
+    .calendar-subscribe strong{font:400 1.8rem/1.2 var(--font-serif);color:var(--pine)}
+    .calendar-subscribe p{font-size:.9rem;color:#526356;max-width:650px;margin:10px 0 0}
+    .calendar-buttons{display:flex;flex-direction:column;gap:9px;align-items:stretch}
+    .calendar-buttons .btn{white-space:nowrap;padding:11px 14px;min-height:43px}
+    .btn-calendar{background:transparent;border:1px solid var(--pine);color:var(--pine)}
+    .btn-calendar:hover{background:#f7f3e8}
+    @media(max-width:1050px){.event-card{grid-template-columns:90px minmax(0,1fr);gap:19px}.event-actions{grid-column:2;flex-direction:row;align-items:center;flex-wrap:wrap}.calendar-subscribe{grid-template-columns:1fr}}
+    @media(max-width:680px){.event-year-head{margin:31px 0 15px}.event-card{grid-template-columns:73px minmax(0,1fr);gap:15px;padding:18px 15px}.event-date{padding-right:11px}.event-date strong{font-size:3rem}.event-details h3{font-size:1.35rem}.event-actions{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;gap:10px}.event-download{width:100%}.calendar-subscribe{padding:22px}.calendar-buttons .btn{white-space:normal}}
   </style>
 </head>
 <body>
@@ -280,13 +306,64 @@
 
     <section class="event-section" id="termine" aria-labelledby="termine-title">
       <div class="shell">
-        <span class="kicker">03 / Zusammenkommen</span>
-        <h2 id="termine-title">Das nächste Fest.</h2>
+        <div class="section-top">
+          <div><span class="kicker">03 / Zusammenkommen</span><h2 id="termine-title">Unsere Feste<br>und Termine.</h2></div>
+          <p class="section-note">Gemeinsam feiern, grillen und Zeit am Wagen verbringen. Unsere Feste beginnen jeweils um <strong>13:00 Uhr</strong>.</p>
+        </div>
+        <div class="event-year-head"><span>2026</span><span>Unser nächstes Fest</span></div>
         <article class="event-card">
-          <div class="event-date" aria-label="4. Dezember 2026"><strong>04</strong><span>Dez 2026</span></div>
-          <div class="event-details"><span class="event-kicker">Freitag · Save the Date</span><h3>Weihnachtsfeier am Wagen</h3><p>Ein gemütlicher Jahresausklang mit der Neustadter Kompanie. Weitere Informationen folgen.</p></div>
-          <span class="event-pill">Wir freuen uns auf euch</span>
+          <div class="event-date" aria-label="04.12.2026 um 13 Uhr"><strong>04</strong><span>Dez 2026</span></div>
+          <div class="event-details">
+            <span class="event-kicker">Freitag · 13:00 Uhr · Weihnachtsfeier</span>
+            <h3>Weihnachtsfeier am Wagen</h3>
+            <p>Wir feiern gemeinsam den Jahresabschluss am Wagen und werfen den Grill an. Der Anmeldelink folgt.</p>
+          </div>
+          <div class="event-actions"><span class="event-pill">Mit Grillen</span><a class="event-download" href="kalender/2026-12-04-weihnachtsfeier.ics" download>↧&nbsp; Zum Kalender hinzufügen</a></div>
         </article>
+        <div class="event-year-head"><span>2027</span><span>Vier Feste durchs Jahr</span></div>
+        <article class="event-card">
+          <div class="event-date" aria-label="05.03.2027 um 13 Uhr"><strong>05</strong><span>Mär 2027</span></div>
+          <div class="event-details">
+            <span class="event-kicker">Freitag · 13:00 Uhr · Saisonauftakt</span>
+            <h3>Erstes Fest 2027</h3>
+            <p>Wir starten zusammen in das neue Veranstaltungsjahr am Wagen. Weitere Informationen folgen.</p>
+          </div>
+          <div class="event-actions"><span class="event-pill">Saisonauftakt</span><a class="event-download" href="kalender/2027-03-05-erstes-fest.ics" download>↧&nbsp; Zum Kalender hinzufügen</a></div>
+        </article>
+        <article class="event-card">
+          <div class="event-date" aria-label="25.06.2027 um 13 Uhr"><strong>25</strong><span>Jun 2027</span></div>
+          <div class="event-details">
+            <span class="event-kicker">Freitag · 13:00 Uhr · Sommerfest</span>
+            <h3>Sommerfest</h3>
+            <p>Gemeinsam den Sommer am Wagen genießen. Weitere Informationen folgen.</p>
+          </div>
+          <div class="event-actions"><span class="event-pill">Sommer</span><a class="event-download" href="kalender/2027-06-25-sommerfest.ics" download>↧&nbsp; Zum Kalender hinzufügen</a></div>
+        </article>
+        <article class="event-card">
+          <div class="event-date" aria-label="24.09.2027 um 13 Uhr"><strong>24</strong><span>Sep 2027</span></div>
+          <div class="event-details">
+            <span class="event-kicker">Freitag · 13:00 Uhr · Herbstfest</span>
+            <h3>Herbstfest</h3>
+            <p>Ein gemeinsamer Herbstnachmittag am Wagen. Weitere Informationen folgen.</p>
+          </div>
+          <div class="event-actions"><span class="event-pill">Herbst</span><a class="event-download" href="kalender/2027-09-24-herbstfest.ics" download>↧&nbsp; Zum Kalender hinzufügen</a></div>
+        </article>
+        <article class="event-card">
+          <div class="event-date" aria-label="03.12.2027 um 13 Uhr"><strong>03</strong><span>Dez 2027</span></div>
+          <div class="event-details">
+            <span class="event-kicker">Freitag · 13:00 Uhr · Weihnachtsfeier</span>
+            <h3>Weihnachtsfeier am Wagen</h3>
+            <p>Gemeinsamer Jahresausklang bei der Neustadter Kompanie. Weitere Informationen folgen.</p>
+          </div>
+          <div class="event-actions"><span class="event-pill">Weihnachten</span><a class="event-download" href="kalender/2027-12-03-weihnachtsfeier.ics" download>↧&nbsp; Zum Kalender hinzufügen</a></div>
+        </article>
+        <div class="calendar-subscribe">
+          <div><strong>Keinen Termin verpassen</strong><p>Alle Feste im Kalender vormerken oder unseren Veranstaltungskalender abonnieren. Anmeldelinks ergänzen wir bei den jeweiligen Festen, sobald sie verfügbar sind.</p></div>
+          <div class="calendar-buttons">
+            <a class="btn btn-wine" href="termine.ics" download>Alle Termine herunterladen ↧</a>
+            <a class="btn btn-calendar" href="webcal://neustadter-kompanie.de/termine.ics">Kalender abonnieren ↗</a>
+          </div>
+        </div>
       </div>
     </section>
 

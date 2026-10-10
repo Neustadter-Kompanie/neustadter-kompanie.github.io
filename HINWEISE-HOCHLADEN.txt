@@ -1,0 +1,7 @@
+Neustadter Kompanie – Website mit Veranstaltungskalender 2026/2027
+
+Alle Dateien und Ordner aus diesem entpackten Paket in das Hauptverzeichnis des GitHub-Repositories hochladen, nicht den übergeordneten Paketordner. Vorhandene Dateien gleichen Namens ersetzen.
+
+Die .ics-Dateien in kalender/ sind einzelne Kalender-Downloads; termine.ics ist die abonnierbare Gesamtdatei. Alle Veranstaltungen beginnen 13:00 Uhr (Europe/Berlin); Endzeiten sind offen. Google-Forms-Anmeldelinks sind noch nicht hinterlegt.
+
+Die bestehenden DNS-Einträge bei STRATO bleiben unverändert.
