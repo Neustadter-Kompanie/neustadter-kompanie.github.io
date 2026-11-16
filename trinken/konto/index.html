@@ -25,6 +25,17 @@
 .family-member-amount small{font-weight:500}
 .family-account-note{font-size:.88rem;color:var(--muted)}
 @media(max-width:440px){.family-member-row{gap:8px}.family-member-amount{font-size:.9rem}}
+
+/* Nur auf verknuepften Gremiumskonten sichtbare Scoreboard-Eigenanteile */
+.nk-scorebox{border:1px solid #c7d6c4;background:#edf4ed;padding:15px 16px;border-radius:12px;margin:14px 0;line-height:1.5}
+.nk-scorebox[hidden],.nk-score-manual[hidden]{display:none!important}
+.nk-scorebox strong{display:block;color:#193d33;font-size:1rem}
+.nk-scorebox label{display:flex;align-items:flex-start;gap:10px;font-weight:650;margin:10px 0 5px}
+.nk-scorebox input[type=checkbox]{width:22px;height:22px;flex-shrink:0;accent-color:#193d33;margin:0}
+.nk-score-manual{background:#f6f1e7;border-radius:9px;padding:9px;margin-top:10px}
+.nk-score-manual label{font-size:.9rem;margin:0 0 7px}
+.nk-score-manual select{padding:8px;width:100%}
+.nk-score-retry{width:auto;padding:9px;margin-top:8px;display:block}
 </style>
 </head>
 <body>
@@ -40,7 +51,13 @@
   <button id="tabMembership" type="button" role="tab" aria-selected="false" aria-controls="membershipArea">Fördermitgliedschaft</button>
 </div>
 <div id="drinkArea" role="tabpanel" aria-labelledby="tabDrinks">
-<section class="card"><div class="eyebrow">Getränkekarte</div><h2>Getränke buchen 🍻</h2><p class="muted">Stelle mit + und − die Anzahl ein (maximal 10 je Buchung). Erst beim Bestätigen wird gebucht. Eigene Buchungen kannst du innerhalb von 5 Minuten unter „Getränkebuchungen“ stornieren. Vom Vorstand nachgetragene Papierstrichlisten sind davon ausgenommen.</p><div id="productList" class="grid" aria-live="polite"><p class="muted">Artikel werden geladen …</p></div><p id="bookingStatus" class="status" role="status" aria-live="polite"></p><button id="refreshAccount" type="button" class="secondary">Kontostand aktualisieren</button></section>
+<section class="card"><div class="eyebrow">Getränkekarte</div><h2>Getränke buchen 🍻</h2><p class="muted">Stelle mit + und − die Anzahl ein (maximal 10 je Buchung). Erst beim Bestätigen wird gebucht. Eigene Buchungen kannst du innerhalb von 5 Minuten unter „Getränkebuchungen“ stornieren. Vom Vorstand nachgetragene Papierstrichlisten sind davon ausgenommen.</p><div id="nkScorebox" class="nk-scorebox" hidden>
+  <strong>🍻 Meine Scoreboard-Zählung</strong>
+  <label><input type="checkbox" id="nkScoreAuto" checked> Pro alkoholischer Artikelbuchung automatisch höchstens ein Getränk für mich zählen</label>
+  <small>Alle bestellten Getränke werden normal berechnet. Mit ausgeschaltetem Schalter kannst du bei jedem alkoholischen Artikel selbst bestimmen, wie viele davon für dich sind (auch 0).</small>
+  <button type="button" id="nkScoreRetry" class="secondary nk-score-retry" hidden>Ausstehende Scoreboard-Korrektur erneut versuchen</button>
+</div>
+<div id="productList" class="grid" aria-live="polite"><p class="muted">Artikel werden geladen …</p></div><p id="bookingStatus" class="status" role="status" aria-live="polite"></p><button id="refreshAccount" type="button" class="secondary">Kontostand aktualisieren</button></section>
 <div class="columns">
   <section class="card"><div class="eyebrow">Verbrauch</div><h2>Meine Getränkebuchungen</h2><ul class="history" id="entries"></ul></section>
   <section class="card"><div class="eyebrow">Einzahlungen</div><h2>Meine Zahlungen</h2><ul class="history" id="payments"></ul></section>
@@ -86,6 +103,53 @@ async function drinkRequest(action,data={}){
  return result;
 }
 const euro=c=>(c/100).toLocaleString("de-DE",{style:"currency",currency:"EUR"});
+// Scoreboard-Eigenanteil wird in einer separaten Edge Function gespeichert, nicht in der Zahlung.
+const NK_SCORE_API="https://tyiskycptrrtlibpdbse.supabase.co/functions/v1/drink-scoreboard";
+const NK_SCORE_PENDING="nk_score_pending_updates_v1";
+let nkScoreEligible=false,nkScoreAlcohol=new Set(),nkScoreRenderers=[];
+const nkAuto=document.getElementById("nkScoreAuto"),nkRetry=document.getElementById("nkScoreRetry");
+async function nkScoreRequest(action,data={}){
+ const response=await fetch(NK_SCORE_API,{method:"POST",headers:{"Content-Type":"application/json",apikey:SUPABASE_ANON_KEY,Authorization:"Bearer "+SUPABASE_ANON_KEY},body:JSON.stringify({action,...data})});
+ const result=await response.json();
+ if(!response.ok||result.success===false)throw new Error(result.error||"Scoreboard-Dienst nicht erreichbar");
+ return result;
+}
+function nkScorePending(){
+ try{
+  const rows=JSON.parse(sessionStorage.getItem(NK_SCORE_PENDING)||"[]");
+  return Array.isArray(rows)?rows.filter(x=>x&&typeof x.entry_id==="string"&&Number.isInteger(x.self_quantity)&&x.self_quantity>=0&&x.self_quantity<=10).slice(-30):[];
+ }catch{return []}
+}
+function nkSavePending(rows){sessionStorage.setItem(NK_SCORE_PENDING,JSON.stringify(rows));nkRetry.hidden=!rows.length;}
+function nkPendingAdd(id,qty){nkSavePending([...nkScorePending().filter(x=>x.entry_id!==id),{entry_id:id,self_quantity:qty}].slice(-30));}
+function nkPendingRemove(id){nkSavePending(nkScorePending().filter(x=>x.entry_id!==id));}
+async function nkInitScore(){
+ nkScoreEligible=false;nkScoreAlcohol=new Set();
+ try{
+  const token=sessionStorage.getItem("drink_guest_token");
+  if(!token)return;
+  const data=await nkScoreRequest("status",{token});
+  nkScoreEligible=data.eligible===true;
+  nkScoreAlcohol=new Set(Array.isArray(data.alcoholic_ids)?data.alcoholic_ids:[]);
+ }catch(error){console.warn("Scoreboard-Zusatz ist nicht verfuegbar",error);}
+ document.getElementById("nkScorebox").hidden=!nkScoreEligible;
+ nkRetry.hidden=!nkScoreEligible||!nkScorePending().length;
+}
+nkAuto.addEventListener("change",()=>nkScoreRenderers.forEach(render=>render()));
+nkRetry.addEventListener("click",async()=>{
+ const token=sessionStorage.getItem("drink_guest_token");
+ const status=document.getElementById("bookingStatus");
+ nkRetry.disabled=true;
+ let failed=0;
+ for(const item of nkScorePending()){
+  try{await nkScoreRequest("set",{token,...item});nkPendingRemove(item.entry_id);}
+  catch{failed++}
+ }
+ nkRetry.disabled=false;
+ status.className="status "+(failed?"error":"success");
+ status.textContent=failed?"Einige Scoreboard-Korrekturen sind noch offen. Die Getränkebuchungen sind bereits gespeichert.":"Alle ausstehenden Scoreboard-Korrekturen übernommen.";
+});
+
 const signedOut=document.getElementById("signedOut"),accountContent=document.getElementById("accountContent"),accountStatus=document.getElementById("accountStatus"),logout=document.getElementById("logout");
 function signOut(){sessionStorage.removeItem("drink_guest_token");accountContent.hidden=true;signedOut.hidden=false;logout.hidden=true;window.location.replace("/trinken/");}
 logout.addEventListener("click",signOut);
@@ -114,10 +178,12 @@ async function loadProducts(){
   try{
     const token=sessionStorage.getItem("drink_guest_token");
     if(!token)throw new Error("Sitzung abgelaufen. Bitte erneut anmelden.");
+    await nkInitScore();
     const result=await drinkRequest("products",{token});
     const rows=productRows(result).filter(p=>p.is_active!==false&&p.active!==false);
     root.replaceChildren();
     if(!rows.length){root.append(document.createTextNode("Momentan keine buchbaren Artikel verfügbar."));return;}
+    nkScoreRenderers=[];
     let categoryHeading="";
     for(const p of rows){
       const category=String(p.category_name||"Getränke");
@@ -135,30 +201,77 @@ async function loadProducts(){
       const heading=document.createElement("h3");heading.textContent=name;
       const price=document.createElement("div");price.className="price";price.textContent=cents===0?"Kostenlos":euro(cents);
       let quantity=0;
+      let selfQuantity=1;
+      const thisAlcoholic=nkScoreEligible&&nkScoreAlcohol.has(id);
+      const scoreManual=document.createElement("div");scoreManual.className="nk-score-manual";
+      const scoreLabel=document.createElement("label");scoreLabel.textContent="Davon für mich (Scoreboard)";
+      const scoreSelect=document.createElement("select");scoreSelect.setAttribute("aria-label",name+" davon für mich");
+      scoreSelect.addEventListener("change",()=>{selfQuantity=Number(scoreSelect.value);});
+      scoreManual.append(scoreLabel,scoreSelect);
+
       const controls=document.createElement("div");controls.className="qty-controls";
       const minus=document.createElement("button");minus.type="button";minus.textContent="−";minus.setAttribute("aria-label",name+" Anzahl verringern");
       const plus=document.createElement("button");plus.type="button";plus.textContent="+";plus.setAttribute("aria-label",name+" Anzahl erhöhen");
       const count=document.createElement("output");count.setAttribute("aria-live","polite");
       const button=document.createElement("button");button.className="primary";button.type="button";
-      function render(){count.textContent=String(quantity);minus.disabled=quantity===0;plus.disabled=quantity===10;button.disabled=quantity===0;button.textContent=quantity?quantity+" × buchen · "+euro(cents*quantity):"Anzahl auswählen";}
+      function render(){
+        count.textContent=String(quantity);minus.disabled=quantity===0;plus.disabled=quantity===10;
+        button.disabled=quantity===0;button.textContent=quantity?quantity+" × buchen · "+euro(cents*quantity):"Anzahl auswählen";
+        if(thisAlcoholic){
+          scoreManual.hidden=nkAuto.checked||quantity===0;
+          if(!Number.isInteger(selfQuantity)||selfQuantity<0)selfQuantity=0;
+          if(selfQuantity>quantity)selfQuantity=quantity;
+          if(quantity>0&&!scoreSelect.options.length)selfQuantity=1;
+          scoreSelect.replaceChildren();
+          for(let n=0;n<=quantity;n++)scoreSelect.add(new Option(String(n),String(n)));
+          scoreSelect.value=String(selfQuantity);
+        }
+      }
+      nkScoreRenderers.push(render);
       minus.addEventListener("click",()=>{quantity=Math.max(0,quantity-1);render();});
       plus.addEventListener("click",()=>{quantity=Math.min(10,quantity+1);render();});
       button.addEventListener("click",async()=>{
         if(button.disabled||!quantity)return;
         const bookedQuantity=quantity;
-        if(!confirm(bookedQuantity+" × "+name+" für "+euro(cents*bookedQuantity)+" verbindlich buchen?"))return;
+        const manualScore=thisAlcoholic&&!nkAuto.checked;
+        const countedQuantity=manualScore?selfQuantity:(thisAlcoholic?1:null);
+        const scoreNote=thisAlcoholic?"\nScoreboard: "+countedQuantity+" selbst getrunken ("+(manualScore?"manuell":"automatisch")+").":"";
+        if(!confirm(bookedQuantity+" × "+name+" für "+euro(cents*bookedQuantity)+" verbindlich buchen?"+scoreNote))return;
         button.disabled=true;minus.disabled=true;plus.disabled=true;status.className="status";status.textContent="Buchung wird gespeichert …";
         try{
           const token=sessionStorage.getItem("drink_guest_token");
           if(!token)throw new Error("Sitzung abgelaufen. Bitte erneut anmelden.");
           const response=await drinkRequest("add_drink",{token,product_id:id,quantity:bookedQuantity});
           if(response.success===false)throw new Error(response.error||"Buchung fehlgeschlagen.");
-          quantity=0;render();await loadAccount();
-          status.className="status success";status.textContent="Gebucht: "+bookedQuantity+" × "+name+" ("+euro(cents*bookedQuantity)+"). Innerhalb von 5 Minuten stornierbar.";
+          // Buchung zuerst: unabhaengig vom Scoreboard immer verbindlich gespeichert.
+          // Bei einer fehlerhaften Scoreboard-Antwort darf diese Buchung NICHT erneut ausgeloest werden.
+          quantity=0;render();
+          let scoreError="";
+          if(manualScore){
+            const entryId=response?.entry?.id;
+            if(!entryId){scoreError="Die Buchung hat keine Buchungs-ID zurueckgegeben.";}
+            else{
+              nkPendingAdd(entryId,countedQuantity);
+              try{
+                await nkScoreRequest("set",{token,entry_id:entryId,self_quantity:countedQuantity});
+                nkPendingRemove(entryId);
+              }catch(err){scoreError=err?.message||"Nicht gespeichert";}
+            }
+          }
+          // Kontostandaktualisierung darf Erfolg der Buchung nicht in einen Buchungsfehler verwandeln.
+          try{await loadAccount();}catch(_error){}
+          status.className="status "+(scoreError?"error":"success");
+          status.textContent="Gebucht: "+bookedQuantity+" × "+name+" ("+euro(cents*bookedQuantity)+"). "+
+            (scoreError?"WICHTIG: Nur die Scoreboard-Auswahl ist noch nicht gespeichert: "+scoreError+". Bitte nicht erneut bestellen.":
+              "Scoreboard: "+(thisAlcoholic?String(countedQuantity)+" für mich.":"unverändert.")+" Innerhalb von 5 Minuten stornierbar.");
+          nkRetry.hidden=!nkScoreEligible||!nkScorePending().length;
         }catch(error){status.className="status error";status.textContent=error.message||"Buchung fehlgeschlagen.";}
         finally{render();}
       });
-      controls.append(minus,count,plus);card.append(heading,price,controls,button);root.append(card);render();
+      controls.append(minus,count,plus);
+      card.append(heading,price,controls);
+      if(thisAlcoholic)card.append(scoreManual);
+      card.append(button);root.append(card);render();
     }
     if(!root.children.length)root.textContent="Die Produktdaten enthalten noch keine unterstützten Preise oder IDs.";
     productsLoaded=true;
